@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "481959707303",
+    "project_id": "appplant-badba",
+    "storage_bucket": "appplant-badba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:481959707303:android:2f1e45fe84ca4052e31182",
+        "android_client_info": {
+          "package_name": "com.example.maclemylinh_18dh110774"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "481959707303-77hurrqsatep528lqsor0oc95rcl3so0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALfixuW5uPiHKRfg6Rom11vg8_HL4SvpI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "481959707303-77hurrqsatep528lqsor0oc95rcl3so0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

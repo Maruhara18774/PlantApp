@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:maclemylinh_18dh110774/screens/products.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,7 +31,10 @@ class MyApp extends StatelessWidget {
           button: TextStyle(fontSize: 12.0,fontWeight: FontWeight.bold),
         )
       ),
-      home: Text("Hi"),
+      home: Scaffold(
+        appBar: AppBar(),
+        body: ProductListPage(),
+      ),
     );
   }
 }
