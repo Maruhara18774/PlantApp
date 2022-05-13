@@ -10,12 +10,12 @@ class SanPham{
   SanPham({this.id, this.idLoadSP, this.ten, this.gia, this.mota, this.hinhAnh, this.tinhtrang});
   factory SanPham.fromJson(dynamic json) {
     return SanPham(
-        id: int.parse(json['id']),
-        idLoadSP: int.parse(json['idLoaiSP']),
-        ten: json['ten'],
-        gia: int.parse(json['gia']),
-        mota: json['mota'],
-        hinhAnh: json['hinhAnh'],
-        tinhtrang: int.parse(json['tinhtrang']));
+        id: json['id'] as int,
+        idLoadSP: json['idLoaiSP'] as int,
+        ten: json['ten'] as String,
+        gia: json['gia'] as int,
+        mota: json['mota'] as String,
+        hinhAnh: json['hinhAnh'] as String,
+        tinhtrang: json['tinhtrang'] as int);
   }
 }

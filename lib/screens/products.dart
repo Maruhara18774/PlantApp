@@ -34,7 +34,27 @@ class _ProductListPageState extends State<ProductListPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text(_list.length.toString())
+      child: GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+          ),
+        itemCount: _list.length,
+          itemBuilder: (context, index){
+          return Column(
+            children: [
+              SizedBox(
+                height: 90,
+                width: 90,
+                child: Image.network(_list[index].hinhAnh!),
+              ),
+            Center(
+              child: Text(
+              _list[index].ten!,
+              textAlign: TextAlign.center,
+              ),)
+            ],
+          );
+      })
     );
   }
 }

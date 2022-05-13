@@ -8,6 +8,7 @@ class UserFirebase {
 
   Future getAll() async {
     await Firebase.initializeApp();
+
     List<KhachHang> itemList = [];
     await users
         .get()
