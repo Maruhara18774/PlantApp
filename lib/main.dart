@@ -1,6 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:maclemylinh_18dh110774/routes.dart';
 import 'package:maclemylinh_18dh110774/screens/products.dart';
+
+import 'screens/home.dart';
 
 void main() async {
   runApp(const MyApp());
@@ -32,10 +35,8 @@ class MyApp extends StatelessWidget {
           button: TextStyle(fontSize: 12.0,fontWeight: FontWeight.bold),
         )
       ),
-      home: Scaffold(
-        appBar: AppBar(),
-        body: ProductListPage(),
-      ),
+      home: HomePage(),
+      routes: routes,
     );
   }
 }
