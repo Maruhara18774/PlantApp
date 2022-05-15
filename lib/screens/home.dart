@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    if(currentUserGlb.id != -1){
+    if (currentUserGlb.id != -1) {
       this.isLogin = true;
     }
   }
@@ -37,47 +37,64 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: screens[selectedIndex],
-      bottomNavigationBar: GNav(
+        appBar: AppBar(
+            actions: [
+              IconButton(onPressed: () {}, icon: Icon(Icons.search_sharp)),
+              IconButton(onPressed: () {}, icon: Icon(Icons.shopping_basket))
+            ],
+            backgroundColor: Color.fromARGB(255, 29, 86, 110),
+            title: const Center(
+              child: Text(
+                'Plants',
+              ),
+            )),
+        body: screens[selectedIndex],
+        bottomNavigationBar: GNav(
           rippleColor: Colors.white, // tab button ripple color when pressed
           hoverColor: Colors.white, // tab button hover color
           tabBorderRadius: 0,
-          tabActiveBorder: Border.all(color: Colors.green, width: 1), // tab button border
+          tabActiveBorder: Border.all(
+              color: Color.fromARGB(255, 29, 86, 110),
+              width: 1), // tab button border
           curve: Curves.decelerate,
           duration: Duration(milliseconds: 100), // tab animation duration
           gap: 8, // the tab button gap between icon and text
-          color: Colors.grey[800], // unselected icon color
-          activeColor: Colors.green, // selected icon and text color
+          color: Color.fromARGB(255, 255, 255, 255), // unselected icon color
+          activeColor:
+              Color.fromARGB(255, 22, 58, 95), // selected icon and text color
           iconSize: 30, // tab button icon size
           tabBackgroundColor: Colors.white, // selected tab background color
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10), // navigation bar padding,
-          backgroundColor: Colors.green,
+          padding: EdgeInsets.symmetric(
+              horizontal: 20, vertical: 10), // navigation bar padding,
+          backgroundColor: Color.fromARGB(255, 29, 86, 110),
           tabs: [
             const GButton(
-              icon: Icons.apps_sharp,
+              icon: Icons.home,
               text: 'Trang chủ',
             ),
             GButton(
-              icon: Icons.clean_hands,
+              icon: Icons.list,
               text: 'Sản phẩm',
             ),
             GButton(
-              icon: Icons.announcement,
+              icon: Icons.newspaper,
               text: 'Tin tức',
             ),
             GButton(
-              icon: Icons.whatshot,
+              icon: Icons.discount,
               text: 'Ưu đãi',
             )
           ],
-        onTabChange: (index){
+          onTabChange: (index) {
             setState(() {
               selectedIndex = index;
             });
-        },
-      ),
-      drawer: this.isLogin ? UserDrawer() : GuestDrawer(homeContext: context,)
-    );
+          },
+        ),
+        drawer: this.isLogin
+            ? UserDrawer()
+            : GuestDrawer(
+                homeContext: context,
+              ));
   }
 }

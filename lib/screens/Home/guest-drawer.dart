@@ -14,26 +14,40 @@ class GuestDrawer extends StatelessWidget {
         children: [
           const DrawerHeader(
             decoration: BoxDecoration(
-              color: Colors.green,
-              image: DecorationImage(image: NetworkImage('https://i.pinimg.com/originals/4d/39/96/4d39967cfaf52941188cd58860f990b4.jpg'),
-              fit: BoxFit.fill)
-            ),
+                color: Color.fromARGB(255, 29, 86, 110),
+                image: DecorationImage(
+                    image: NetworkImage(
+                        'https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png'),
+                    fit: BoxFit.fitHeight)),
             child: SizedBox(),
           ),
           ListTile(
-            title: const Text('Đăng nhập'),
+            leading: const Icon(Icons.login),
+            textColor: Color.fromARGB(255, 1, 1, 1),
+            title: const Text(
+              'Đăng nhập',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
             onTap: () {
               Navigator.pushNamed(homeContext, LoginPage.routeName);
             },
           ),
           ListTile(
-            title: const Text('Đăng ký'),
+            leading: const Icon(Icons.app_registration_rounded),
+            title: const Text(
+              'Đăng ký',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
             onTap: () {
               Navigator.pushNamed(homeContext, RegisterPage.routeName);
             },
           ),
           ListTile(
-            title: const Text('Liên hệ'),
+            leading: const Icon(Icons.contact_mail),
+            title: const Text(
+              'Liên hệ',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
             onTap: () {
               Navigator.pop(context);
             },
