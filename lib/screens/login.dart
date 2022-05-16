@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:maclemylinh_18dh110774/global.dart';
 import 'package:maclemylinh_18dh110774/screens/home.dart';
 import 'package:maclemylinh_18dh110774/screens/register.dart';
 
@@ -178,10 +179,10 @@ class _LoginPageState extends State<LoginPage> {
     if (_formKey.currentState!.validate()) {
       await _auth
           .signInWithEmailAndPassword(email: email, password: password)
-          .then((uid) => {
-                Fluttertoast.showToast(msg: "Đăng nhập thành công"),
-                Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => HomePage())),
+          .then((uid){
+                Fluttertoast.showToast(msg: "Đăng nhập thành công");
+                currentUserGlb.uid = uid.toString();
+                Navigator.pushNamed(context, HomePage.routeName);
               })
           .catchError((e) {
         Fluttertoast.showToast(msg: e!.message);
