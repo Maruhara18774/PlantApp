@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    if (currentUserGlb.id != -1) {
+    if (currentUserGlb.uid != '') {
       this.isLogin = true;
     }
   }

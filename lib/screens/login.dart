@@ -1,5 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:maclemylinh_18dh110774/screens/home.dart';
+import 'package:maclemylinh_18dh110774/screens/register.dart';
 
 class LoginPage extends StatefulWidget {
   static String routeName = "/login";
@@ -10,8 +14,16 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  String _username = "";
+  // form key
+  final _formKey = GlobalKey<FormState>();
+  //edit controller
+  final TextEditingController emailController = new TextEditingController();
+  final TextEditingController passwordController = new TextEditingController();
+  //setState
+  String _email = "";
   String _password = "";
+  //firebase
+  final _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +32,15 @@ class _LoginPageState extends State<LoginPage> {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Container(
-            child: Container(
+            child: Form(
+              key: _formKey,
               child: Column(
                 children: [
+                  Container(
+                      child: Image(
+                          image: NetworkImage(
+                              'https://cdn-icons-png.flaticon.com/512/449/449350.png',
+                              scale: 3.5))),
                   Text('Plants',
                       style: TextStyle(
                           color: Color.fromARGB(255, 33, 171, 165),
@@ -31,29 +49,58 @@ class _LoginPageState extends State<LoginPage> {
                   SizedBox(height: 5),
                   SizedBox(height: 20),
                   TextFormField(
+                    keyboardType: TextInputType.emailAddress,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return ("Vui lòng nhập email của bạn");
+                      }
+                      if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
+                          .hasMatch(value)) {
+                        return ("Vui lòng nhập email hợp lệ");
+                      }
+                      return null;
+                    },
+                    controller: emailController,
                     decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: "Email",
                         prefixIcon: Icon(Icons.mail_outline)),
                     onChanged: (value) {
-                      _username = value;
+                      setState(() {
+                        _email = value;
+                      });
                     },
                   ),
                   SizedBox(height: 5),
                   TextFormField(
+                    controller: passwordController,
+                    obscureText: true,
+                    validator: (value) {
+                      RegExp regex = new RegExp(r'^.{6,}$');
+                      if (value!.isEmpty) {
+                        return ("Vui lòng nhập mật khẩu");
+                      }
+                      if (!regex.hasMatch(value)) {
+                        return ("Vui lòng nhập mật khẩu trên 6 kí tự");
+                      }
+                    },
                     decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: "Mật khẩu",
                         prefixIcon: Icon(Icons.lock_outline_rounded)),
                     onChanged: (value) {
-                      _password = value;
+                      setState(() {
+                        _password = value;
+                      });
                     },
                   ),
                   SizedBox(
                     height: 5,
                   ),
                   ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        signIn(emailController.text, passwordController.text);
+                      },
                       child: Text(
                         'Đăng nhập',
                         style: TextStyle(fontSize: 15),
@@ -104,9 +151,13 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
                       Text("Bạn chưa có tài khoản ? ",
                           style: TextStyle(color: Colors.green)),
-                      Text(
-                        "Đăng kí ",
-                        style: TextStyle(color: Colors.deepOrangeAccent),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: ((context) => RegisterPage())));
+                        },
+                        child: Text("Đăng kí "),
+                        // style: ButtonStyle(backgroundColor: Colors.black),
                       ),
                     ],
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -114,26 +165,27 @@ class _LoginPageState extends State<LoginPage> {
                 ],
                 mainAxisAlignment: MainAxisAlignment.center,
               ),
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: NetworkImage(
-                        'https://cdn-icons-png.flaticon.com/512/449/449350.png'),
-                    alignment: Alignment.topCenter,
-                    fit: BoxFit.scaleDown,
-                    scale: 2.2),
-              ),
             ),
-            // decoration: BoxDecoration(
-            //   image: DecorationImage(
-            //       image: NetworkImage(
-            //           'https://res.cloudinary.com/dhi3bjn0s/image/upload/v1648739497/test/Flutter_THB1/dish_2_b4x0cy.png'),
-            //       alignment: Alignment.bottomLeft,
-            //       scale: 1.5),
-            // )
           ),
         ),
       ),
       resizeToAvoidBottomInset: false,
     );
+  }
+
+  //login function
+  void signIn(String email, String password) async {
+    if (_formKey.currentState!.validate()) {
+      await _auth
+          .signInWithEmailAndPassword(email: email, password: password)
+          .then((uid) => {
+                Fluttertoast.showToast(msg: "Đăng nhập thành công"),
+                Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => HomePage())),
+              })
+          .catchError((e) {
+        Fluttertoast.showToast(msg: e!.message);
+      });
+    }
   }
 }

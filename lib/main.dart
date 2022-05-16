@@ -5,7 +5,10 @@ import 'package:maclemylinh_18dh110774/screens/products.dart';
 
 import 'screens/home.dart';
 
-void main() async {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(const MyApp());
 }
 

@@ -1,23 +1,37 @@
 class KhachHang {
-  int? id;
+  String? uid;
   String? hoten;
+  String? ngaysinh;
   String? email;
   String? sdt;
-  String? diachi;
-  String? matkhau;
-  int? diem;
+  String? avatar;
 
-  KhachHang(
-      {this.id, this.hoten, this.email, this.sdt, this.diachi, this.matkhau,this.diem});
+  KhachHang({
+    this.uid,
+    this.hoten,
+    this.ngaysinh,
+    this.email,
+    this.sdt,
+    this.avatar,
+  });
 
-  factory KhachHang.fromJson(dynamic json) {
+  factory KhachHang.fromMap(map) {
     return KhachHang(
-        id: int.parse(json['id']),
-        hoten: json['hoten'],
-        email: json['email'],
-        sdt: json['sdt'],
-        diachi: json['diachi'],
-        matkhau: json['matkhau'],
-        diem: int.parse(json['diem']));
+        uid: map['uid'],
+        hoten: map['hoten'],
+        ngaysinh: map['ngaysinh'],
+        email: map['email'],
+        sdt: map['sdt'],
+        avatar: map['avatar']);
+  }
+  Map<String, dynamic> toMap() {
+    return {
+      'uid': uid,
+      'hoten': hoten,
+      'ngaysinh': ngaysinh,
+      'email': email,
+      'sdt': sdt,
+      'avatar': avatar,
+    };
   }
 }
