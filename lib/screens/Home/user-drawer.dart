@@ -1,57 +1,149 @@
-import 'package:flutter/material.dart';
+import 'dart:ffi';
 
-class UserDrawer extends StatelessWidget {
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:maclemylinh_18dh110774/global.dart';
+import 'package:maclemylinh_18dh110774/model/khach_hang.dart';
+import 'package:maclemylinh_18dh110774/screens/User/contact.dart';
+import 'package:maclemylinh_18dh110774/screens/User/history.dart';
+import 'package:maclemylinh_18dh110774/screens/User/love.dart';
+import 'package:maclemylinh_18dh110774/screens/User/profile.dart';
+import 'package:maclemylinh_18dh110774/screens/login.dart';
+
+class UserDrawer extends StatefulWidget {
   const UserDrawer({Key? key}) : super(key: key);
+  @override
+  _UserDrawerState createState() => _UserDrawerState();
+}
+
+class _UserDrawerState extends State<UserDrawer> {
+  // final String currentUserId = currentUserId?.uid;
+  User? user = FirebaseAuth.instance.currentUser;
+  KhachHang loggedInuser = KhachHang();
+  @override
+  void initState() {
+    super.initState();
+    FirebaseFirestore.instance
+        .collection("KHACH_HANG")
+        .doc(user!.uid)
+        .get()
+        .then((value) {
+      this.loggedInuser = KhachHang.fromMap(value.data());
+      setState(() {});
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
-        children: [
-          const DrawerHeader(
+        children: <Widget>[
+          DrawerHeader(
             decoration: BoxDecoration(
-              image: DecorationImage(image: NetworkImage('https://i.pinimg.com/originals/4d/39/96/4d39967cfaf52941188cd58860f990b4.jpg'),
-                  fit: BoxFit.fitWidth
-              ),
-
+              color: Color.fromARGB(255, 29, 86, 110),
             ),
-            child: CircleAvatar(
-                backgroundImage: NetworkImage('https://media.istockphoto.com/photos/be-so-good-you-become-your-own-source-of-inspiration-picture-id1290528178?b=1&k=20&m=1290528178&s=170667a&w=0&h=ILOZEnHzV2WGCGHWzOl-nIgKsk_-GiysByzZ3ZGIFpk=')
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Center(
+                  child: Container(
+                    height: 100,
+                    width: 100,
+                    child: CircleAvatar(
+                        backgroundImage: NetworkImage(
+                            'https://i.pinimg.com/474x/76/4d/59/764d59d32f61f0f91dec8c442ab052c5.jpg')),
+                  ),
+                ),
+                Center(
+                  child: Text("${loggedInuser.hoten}",
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 255, 255, 255),
+                          fontWeight: FontWeight.w500,
+                          fontSize: 18)),
+                ),
+                Center(
+                  child: Text("${loggedInuser.email}",
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 255, 255, 255),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14)),
+                ),
+              ],
             ),
           ),
           ListTile(
-            title: const Text('Thông tin tài khoản'),
+            leading: const Icon(Icons.person),
+            title: const Text(
+              'Thông tin tài khoản',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ProfilePage()),
+              );
             },
           ),
           ListTile(
-            title: const Text('Lịch sử mua hàng'),
+            leading: const Icon(Icons.history),
+            title: const Text(
+              'Lịch sử mua hàng',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const HistoryPage()),
+              );
             },
           ),
           ListTile(
-            title: const Text('Yêu thích'),
+            leading: const Icon(Icons.heart_broken),
+            title: const Text(
+              'Yêu thích',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const LovePage()),
+              );
             },
           ),
           ListTile(
-            title: const Text('Liên hệ'),
+            leading: const Icon(Icons.contact_mail),
+            title: const Text(
+              'Liên hệ',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ContactPage()),
+              );
             },
           ),
           ListTile(
-            title: const Text('Đăng xuất'),
+            leading: const Icon(Icons.logout),
+            title: const Text(
+              'Đăng xuất',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
             onTap: () {
-              Navigator.pop(context);
+              logout(context);
             },
           ),
         ],
       ),
     );
+  }
+
+  // the logout function
+  Future<void> logout(BuildContext context) async {
+    await FirebaseAuth.instance.signOut();
+    Navigator.of(context)
+        .pushReplacement(MaterialPageRoute(builder: (context) => LoginPage()));
   }
 }

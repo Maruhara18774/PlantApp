@@ -41,6 +41,8 @@ dependencies:
   firebase_auth: ^3.3.18
   fluttertoast: ^8.0.9
   date_time_picker: ^2.1.0
+  image_picker: ^0.8.5+3
+  firebase_storage: ^10.2.16
 
 dev_dependencies:
   flutter_test:

@@ -11,15 +11,25 @@ class GuestDrawer extends StatelessWidget {
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
-        children: [
-          const DrawerHeader(
+        children: <Widget>[
+          DrawerHeader(
             decoration: BoxDecoration(
-                color: Color.fromARGB(255, 29, 86, 110),
-                image: DecorationImage(
-                    image: NetworkImage(
-                        'https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png'),
-                    fit: BoxFit.fitHeight)),
-            child: SizedBox(),
+              color: Color.fromARGB(255, 29, 86, 110),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Center(
+                  child: Container(
+                    height: 120,
+                    width: 120,
+                    child: CircleAvatar(
+                        backgroundImage: NetworkImage(
+                            'https://icon-library.com/images/icon-user/icon-user-19.jpg')),
+                  ),
+                ),
+              ],
+            ),
           ),
           ListTile(
             leading: const Icon(Icons.login),

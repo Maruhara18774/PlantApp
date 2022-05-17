@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:maclemylinh_18dh110774/global.dart';
 import 'package:maclemylinh_18dh110774/model/khach_hang.dart';
 import 'package:maclemylinh_18dh110774/screens/home.dart';
 
@@ -273,7 +274,11 @@ class _RegisterPageState extends State<RegisterPage> {
       try {
         await _auth
             .createUserWithEmailAndPassword(email: email, password: password)
-            .then((value) => {postDetailsToFirestore()})
+            .then((uid) => {
+                  postDetailsToFirestore(),
+                  currentUserGlb.uid = uid.toString(),
+                  Fluttertoast.showToast(msg: "Đăng kí thành công"),
+                })
             .catchError((e) {
           Fluttertoast.showToast(msg: e!.message);
         });
