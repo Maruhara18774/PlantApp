@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:maclemylinh_18dh110774/global.dart';
 import 'package:maclemylinh_18dh110774/screens/Home/guest-drawer.dart';
 import 'package:maclemylinh_18dh110774/screens/Home/home-fragment.dart';
-import 'package:maclemylinh_18dh110774/screens/Home/news-fragment.dart';
+import 'package:maclemylinh_18dh110774/screens/Home/notification-fragment.dart';
 import 'package:maclemylinh_18dh110774/screens/Home/products-fragment.dart';
 import 'package:maclemylinh_18dh110774/screens/Home/sale-fragment.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
   List<Widget> screens = [
     HomeFragment(),
     ProductsFragment(),
-    NewsFragment(),
+    NotificationFragment(),
     SaleFragment()
   ];
 
@@ -78,8 +78,8 @@ class _HomePageState extends State<HomePage> {
               text: 'Sản phẩm',
             ),
             GButton(
-              icon: Icons.newspaper,
-              text: 'Tin tức',
+              icon: Icons.notifications,
+              text: 'Thông báo',
             ),
             GButton(
               icon: Icons.discount,
@@ -92,10 +92,7 @@ class _HomePageState extends State<HomePage> {
             });
           },
         ),
-        drawer: this.isLogin
-            ? UserDrawer()
-            : GuestDrawer(
-                homeContext: context
-              ));
+        drawer:
+            this.isLogin ? UserDrawer() : GuestDrawer(homeContext: context));
   }
 }

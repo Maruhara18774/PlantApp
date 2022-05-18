@@ -1,5 +1,4 @@
-import 'dart:ffi';
-
+import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -49,11 +48,11 @@ class _UserDrawerState extends State<UserDrawer> {
               children: <Widget>[
                 Center(
                   child: Container(
-                    height: 100,
-                    width: 100,
+                    height: 90,
+                    width: 90,
                     child: CircleAvatar(
-                        backgroundImage: NetworkImage(
-                            'https://i.pinimg.com/474x/76/4d/59/764d59d32f61f0f91dec8c442ab052c5.jpg')),
+                        backgroundImage:
+                            NetworkImage('${loggedInuser.avatar}')),
                   ),
                 ),
                 Center(
@@ -61,14 +60,14 @@ class _UserDrawerState extends State<UserDrawer> {
                       style: TextStyle(
                           color: Color.fromARGB(255, 255, 255, 255),
                           fontWeight: FontWeight.w500,
-                          fontSize: 18)),
+                          fontSize: 16)),
                 ),
                 Center(
                   child: Text("${loggedInuser.email}",
                       style: TextStyle(
                           color: Color.fromARGB(255, 255, 255, 255),
                           fontWeight: FontWeight.bold,
-                          fontSize: 14)),
+                          fontSize: 12)),
                 ),
               ],
             ),
