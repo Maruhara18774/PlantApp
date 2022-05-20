@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:maclemylinh_18dh110774/model/san_pham.dart';
+import 'package:maclemylinh_18dh110774/screens/Home/detailPro.dart';
 
 class ItemProduct extends StatefulWidget {
   SanPham sanPham;
@@ -26,9 +27,8 @@ class _ItemProductState extends State<ItemProduct> {
       padding: EdgeInsets.all(5),
       child: InkWell(
         onTap: () {
-          // Navigator.of(context).push(MaterialPageRoute(
-          //     builder: (context) =>
-          //         SanPham(sanPham: widget.detailProduct)));
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => DetailPro(sanPham: widget.sanPham)));
         },
         child: Container(
             child: Column(children: [
@@ -61,8 +61,11 @@ class _ItemProductState extends State<ItemProduct> {
                     children: [
                       Text(
                         '${widget.sanPham.ten}',
+                        maxLines: 1,
                         style: TextStyle(
-                            fontSize: 16, color: Colors.teal.shade800),
+                            overflow: TextOverflow.ellipsis,
+                            fontSize: 16,
+                            color: Colors.teal.shade800),
                       ),
                       Text(
                           '${widget.sanPham.tinhtrang == 1 ? 'Còn hàng' : 'Hết hàng'}',
