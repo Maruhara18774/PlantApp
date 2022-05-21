@@ -8,6 +8,7 @@ import 'package:maclemylinh_18dh110774/screens/Home/products-fragment.dart';
 import 'package:maclemylinh_18dh110774/screens/Home/sale-fragment.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:maclemylinh_18dh110774/screens/Home/user-drawer.dart';
+import 'package:maclemylinh_18dh110774/screens/cart.dart';
 
 class HomePage extends StatefulWidget {
   static String routeName = "/home";
@@ -41,7 +42,9 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
             actions: [
               IconButton(onPressed: () {}, icon: Icon(Icons.search_sharp)),
-              IconButton(onPressed: () {}, icon: Icon(Icons.shopping_basket))
+              IconButton(onPressed: () {
+                Navigator.pushNamed(context, CartPage.routeName);
+              }, icon: Icon(Icons.shopping_basket))
             ],
             backgroundColor: Color.fromARGB(255, 29, 86, 110),
             title: const Center(

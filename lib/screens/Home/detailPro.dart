@@ -1,8 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:maclemylinh_18dh110774/firebase/product.dart';
+import 'package:maclemylinh_18dh110774/global.dart';
+import 'package:maclemylinh_18dh110774/model/chi_tiet_gio_hang.dart';
 import 'package:maclemylinh_18dh110774/model/san_pham.dart';
 import 'package:maclemylinh_18dh110774/screens/Home/itemProduct.dart';
 
@@ -143,7 +146,17 @@ class _DetailProState extends State<DetailPro> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                var cartItem = cartCTGioHang.firstWhere((element) => element.idSanPham == widget.sanPham.id, orElse: () => ChiTietGioHang(id: -1));
+                                if(cartItem.id == -1){
+                                  cartSanPhamGlb.add(widget.sanPham);
+                                  cartCTGioHang.add(new ChiTietGioHang(idSanPham: id,soLuong: 1,tongTien: giaPro?.toDouble()));
+                                }
+                                else{
+                                  cartItem.soLuong = cartItem.soLuong! + 1;
+                                }
+                                Fluttertoast.showToast(msg: "Thêm vào giỏ hàng thành công");
+                              },
                               child: Text(
                                 'Thêm vào',
                                 style: TextStyle(fontSize: 15),
