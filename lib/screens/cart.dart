@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:maclemylinh_18dh110774/global.dart';
 import 'package:maclemylinh_18dh110774/model/chi_tiet_gio_hang.dart';
 import 'package:maclemylinh_18dh110774/model/san_pham.dart';
+import 'package:maclemylinh_18dh110774/screens/checkout.dart';
 
 class CartPage extends StatefulWidget {
   static String routeName = "/cart";
@@ -38,7 +40,7 @@ class _CartPageState extends State<CartPage> {
           },
           child: Icon(Icons.arrow_back_ios),
         ),
-        title: Text("Cart"),
+        title: Text("Giỏ hàng"),
       ),
       bottomNavigationBar: Row(
         children: [
@@ -52,19 +54,12 @@ class _CartPageState extends State<CartPage> {
             child: ElevatedButton(
               onPressed: () {
                 if (sum != 0) {
-                  this.setState(() {
-                    cartCTGioHang =
-                    List<ChiTietGioHang>.empty(growable: true);
-                    cartSanPhamGlb = List<SanPham>.empty(growable: true);
-                    this.sum = 0;
-                  });
+                  Navigator.pushNamed(context, CheckoutPage.routeName, arguments: "");
                 } else {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text("Empty cart can not checkout."),
-                  ));
+                  Fluttertoast.showToast(msg: "Giỏ hàng trống.");
                 }
               },
-              child: Text("CHECKOUT"),
+              child: Text("THANH TOÁN"),
               style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Color.fromARGB(255, 29, 86, 110)),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(

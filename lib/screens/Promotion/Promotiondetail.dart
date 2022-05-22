@@ -23,13 +23,8 @@ class _ItemPromotionState extends State<ItemPromotion> {
           ),
           flexibleSpace: Container(
             decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.bottomLeft,
-                    end: Alignment.topRight,
-                    colors: <Color>[
-                      Colors.teal.shade900,
-                      Colors.teal.shade600
-                    ])),
+                color: Color.fromARGB(255, 29, 86, 110),
+            ),
           ),
         ),
         body: Container(

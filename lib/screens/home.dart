@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:maclemylinh_18dh110774/global.dart';
 import 'package:maclemylinh_18dh110774/screens/Home/guest-drawer.dart';
 import 'package:maclemylinh_18dh110774/screens/Home/home-fragment.dart';
@@ -43,7 +44,12 @@ class _HomePageState extends State<HomePage> {
             actions: [
               IconButton(onPressed: () {}, icon: Icon(Icons.search_sharp)),
               IconButton(onPressed: () {
-                Navigator.pushNamed(context, CartPage.routeName);
+                if (currentUserGlb.uid != '') {
+                  Navigator.pushNamed(context, CartPage.routeName);
+                }
+                else{
+                  Fluttertoast.showToast(msg: "Vui lòng đăng nhập");
+                }
               }, icon: Icon(Icons.shopping_basket))
             ],
             backgroundColor: Color.fromARGB(255, 29, 86, 110),

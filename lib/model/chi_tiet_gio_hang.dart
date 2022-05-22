@@ -1,6 +1,6 @@
 class ChiTietGioHang {
-  int? id;
-  int? idGioHang;
+  String? id;
+  String? idGioHang;
   int? idSanPham;
   int? soLuong;
   double? tongTien;
@@ -15,8 +15,8 @@ class ChiTietGioHang {
 
   factory ChiTietGioHang.fromMap(map) {
     return ChiTietGioHang(
-        id: map['id'] as int,
-        idGioHang: map['idGioHang'] as int,
+        id: map['id'] as String,
+        idGioHang: map['idGioHang'] as String,
         idSanPham: map['idSanPham'] as int,
         soLuong: map['soLuong'] as int,
         tongTien: map['tong'] as double);

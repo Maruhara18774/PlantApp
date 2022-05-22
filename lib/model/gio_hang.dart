@@ -1,5 +1,5 @@
 class GioHang {
-  int? id;
+  String? idGioHang;
   int? idGiaoHang;
   String? idKhachHang;
   String? ngayDat;
@@ -7,7 +7,7 @@ class GioHang {
   double? tong;
 
   GioHang(
-      {this.id,
+      {this.idGioHang,
       this.idGiaoHang,
       this.idKhachHang,
       this.ngayDat,
@@ -16,7 +16,7 @@ class GioHang {
 
   factory GioHang.fromMap(map) {
     return GioHang(
-        id: map['id'] as int,
+        idGioHang: map['idGioHang'] as String,
         idGiaoHang: map['idGiaoHang'] as int,
         idKhachHang: map['idKhachHang'] as String,
         ngayDat: map['ngayDat'] as String,
@@ -25,7 +25,7 @@ class GioHang {
   }
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
+      'idGioHang': idGioHang,
       'idGiaoHang': idGiaoHang,
       'idKhachHang': idKhachHang,
       'ngayDat': ngayDat,

@@ -15,13 +15,7 @@ class _DetailNewsState extends State<DetailNews> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.bottomLeft,
-                  end: Alignment.topRight,
-                  colors: <Color>[Colors.teal.shade900, Colors.teal.shade600])),
-        ),
+        backgroundColor: Color.fromARGB(255, 29, 86, 110),
         title: Text(
           'Thông tin cây cảnh',
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.normal),

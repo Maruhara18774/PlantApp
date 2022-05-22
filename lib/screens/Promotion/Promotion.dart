@@ -40,17 +40,19 @@ class _PromotionState extends State<Promotion> {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return SafeArea(child:Scaffold(body: Container(
       color: Colors.green.shade400,
       child: ListView.builder(
           itemCount: lsPromo.length,
           itemBuilder: (context, index) {
-            return _itemPromo(index);
+            return _itemPromo(index, width);
           }),
     )));
   }
 
-  Widget _itemPromo(int index) {
+  Widget _itemPromo(int index, double width) {
 
     return InkWell(
         onTap: () {
@@ -61,6 +63,7 @@ class _PromotionState extends State<Promotion> {
                   ItemPromotion(promotion: lsPromo[index])));
     },
         child: Container(
+          width: width,
         // padding: EdgeInsets.all(15),
         margin: EdgeInsets.only(top: 10, left: 16, right: 16),
         decoration: BoxDecoration(
@@ -98,11 +101,5 @@ class _PromotionState extends State<Promotion> {
               ),
             ))
     );  }
-
-  DateFormat(String s) {
-
-  }
-
-  NumberFormat(String s) {}
 }
 

@@ -147,13 +147,14 @@ class _DetailProState extends State<DetailPro> {
                         children: [
                           ElevatedButton(
                               onPressed: () {
-                                var cartItem = cartCTGioHang.firstWhere((element) => element.idSanPham == widget.sanPham.id, orElse: () => ChiTietGioHang(id: -1));
-                                if(cartItem.id == -1){
+                                var cartItem = cartCTGioHang.firstWhere((element) => element.idSanPham == widget.sanPham.id, orElse: () => ChiTietGioHang(id: ""));
+                                if(cartItem.id == ""){
                                   cartSanPhamGlb.add(widget.sanPham);
                                   cartCTGioHang.add(new ChiTietGioHang(idSanPham: id,soLuong: 1,tongTien: giaPro?.toDouble()));
                                 }
                                 else{
                                   cartItem.soLuong = cartItem.soLuong! + 1;
+                                  cartItem.tongTien = cartItem.tongTien! + giaPro!;
                                 }
                                 Fluttertoast.showToast(msg: "Thêm vào giỏ hàng thành công");
                               },

@@ -43,77 +43,88 @@ class _NewsState extends State<NewsState> {
   }
   @override
   Widget build(BuildContext context) {
-    print(lsNews);
-    return Material(
-      child:  Container(
-        // padding: EdgeInsets.only(left: 15, right: 15),
-        color: Colors.grey.shade200,
-        child: ListView.builder(
-          // key: _myListKey,
-          // initialItemCount: lsNews.length,
-            itemCount: lsNews.length,
-            itemBuilder: (context, index) {
-              print(lsNews[index].nameNews);
-              return InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => DetailNews(news: lsNews[index])));
-                  },
-                  child: Container(
-                    padding: EdgeInsets.all(7),
-                    margin: EdgeInsets.only(top: 10, left: 16, right: 16),
-                    decoration: BoxDecoration(
-                        color: Colors.lightGreen.shade100,
-                        borderRadius: BorderRadius.all(Radius.circular(15))),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          height: 80,
-                          width: 80,
-                          decoration: ShapeDecoration(
-                              color: Colors.grey.shade100,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.all(Radius.circular(7))),
-                              image: DecorationImage(
-                                  image: NetworkImage('${lsNews[index].imageNews}'),
-                                  fit: BoxFit.cover)),
-                        ),
-                        Expanded(
-                            child: Container(
-                                padding: EdgeInsets.only(top: 10, left: 10, right: 10),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      '${lsNews[index].nameNews}',
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold, fontSize: 16),
-                                    ),
-                                    SizedBox(
-                                      height: 3,
-                                    ),
-                                    Text(
-                                      '${lsNews[index].detailNews}',
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(color: Colors.grey.shade600),
-                                    )
-                                  ],
-                                )))
-                      ],
-                    ),
-                  ));
-            }),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 29, 86, 110),
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(Icons.arrow_back_ios),
+        ),
+        title: Text("Giỏ hàng"),
+      ),
+      body: Material(
+        child:  Container(
+          // padding: EdgeInsets.only(left: 15, right: 15),
+          color: Colors.grey.shade200,
+          child: ListView.builder(
+            // key: _myListKey,
+            // initialItemCount: lsNews.length,
+              itemCount: lsNews.length,
+              itemBuilder: (context, index) {
+                print(lsNews[index].nameNews);
+                return InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DetailNews(news: lsNews[index])));
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(7),
+                      margin: EdgeInsets.only(top: 10, left: 16, right: 16),
+                      decoration: BoxDecoration(
+                          color: Colors.lightGreen.shade100,
+                          borderRadius: BorderRadius.all(Radius.circular(15))),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            height: 80,
+                            width: 80,
+                            decoration: ShapeDecoration(
+                                color: Colors.grey.shade100,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(Radius.circular(7))),
+                                image: DecorationImage(
+                                    image: NetworkImage('${lsNews[index].imageNews}'),
+                                    fit: BoxFit.cover)),
+                          ),
+                          Expanded(
+                              child: Container(
+                                  padding: EdgeInsets.only(top: 10, left: 10, right: 10),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        '${lsNews[index].nameNews}',
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold, fontSize: 16),
+                                      ),
+                                      SizedBox(
+                                        height: 3,
+                                      ),
+                                      Text(
+                                        '${lsNews[index].detailNews}',
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(color: Colors.grey.shade600),
+                                      )
+                                    ],
+                                  )))
+                        ],
+                      ),
+                    ));
+              }),
 
-      )
-      ,
+        )
+        ,
+      ),
     );
   }
 
