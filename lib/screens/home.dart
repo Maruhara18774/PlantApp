@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
     HomeFragment(),
     ProductsFragment(),
     NotificationFragment(),
-    SaleFragment()
+    Promotion()
   ];
 
   @override

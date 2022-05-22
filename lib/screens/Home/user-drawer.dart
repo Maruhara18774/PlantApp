@@ -10,6 +10,8 @@ import 'package:maclemylinh_18dh110774/screens/User/love.dart';
 import 'package:maclemylinh_18dh110774/screens/User/profile.dart';
 import 'package:maclemylinh_18dh110774/screens/login.dart';
 
+import '../News/NewsList.dart';
+
 class UserDrawer extends StatefulWidget {
   const UserDrawer({Key? key}) : super(key: key);
   @override
@@ -110,6 +112,19 @@ class _UserDrawerState extends State<UserDrawer> {
                 MaterialPageRoute(builder: (context) => const LovePage()),
               );
             },
+          ),
+          ListTile(
+              leading: const Icon(Icons.contact_mail),
+              title: const Text(
+                'Tin tức',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const NewsState()),
+                );
+              }
           ),
           ListTile(
             leading: const Icon(Icons.contact_mail),

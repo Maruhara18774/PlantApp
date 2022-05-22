@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:maclemylinh_18dh110774/screens/login.dart';
 import 'package:maclemylinh_18dh110774/screens/register.dart';
 
+import '../News/NewsList.dart';
+
 class GuestDrawer extends StatelessWidget {
   final BuildContext homeContext;
   const GuestDrawer({Key? key, required this.homeContext}) : super(key: key);
@@ -50,6 +52,16 @@ class GuestDrawer extends StatelessWidget {
             ),
             onTap: () {
               Navigator.pushNamed(homeContext, RegisterPage.routeName);
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.contact_mail),
+            title: const Text(
+              'Tin tức',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
+            onTap: () {
+              Navigator.pushNamed(homeContext, NewsState.routeName);
             },
           ),
           ListTile(
