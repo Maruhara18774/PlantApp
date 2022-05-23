@@ -25,7 +25,11 @@ class _UserDrawerState extends State<UserDrawer> {
   @override
   void initState() {
     super.initState();
-    FirebaseFirestore.instance
+    fetchData();
+  }
+
+  Future fetchData() async {
+    await FirebaseFirestore.instance
         .collection("KHACH_HANG")
         .doc(user!.uid)
         .get()
@@ -33,6 +37,7 @@ class _UserDrawerState extends State<UserDrawer> {
       this.loggedInuser = KhachHang.fromMap(value.data());
       setState(() {});
     });
+    return loggedInuser;
   }
 
   @override
@@ -50,12 +55,22 @@ class _UserDrawerState extends State<UserDrawer> {
               children: <Widget>[
                 Center(
                   child: Container(
-                    height: 90,
-                    width: 90,
-                    child: CircleAvatar(
-                        backgroundImage:
-                            NetworkImage('${loggedInuser.avatar}')),
-                  ),
+                      height: 90,
+                      width: 90,
+                      // child: CircleAvatar(
+                      //     backgroundImage:
+                      //         NetworkImage('${loggedInuser.avatar}')),
+
+                      child: FutureBuilder(
+                        future: fetchData(),
+                        builder: (context, snapshot) {
+                          return snapshot.hasData
+                              ? CircleAvatar(
+                                  backgroundImage:
+                                      NetworkImage('${loggedInuser.avatar}'))
+                              : Image.asset('assets/anhdaidien.jpg');
+                        },
+                      )),
                 ),
                 Center(
                   child: Text("${loggedInuser.hoten}",
@@ -124,8 +139,7 @@ class _UserDrawerState extends State<UserDrawer> {
                   context,
                   MaterialPageRoute(builder: (context) => const NewsState()),
                 );
-              }
-          ),
+              }),
           ListTile(
             leading: const Icon(Icons.contact_mail),
             title: const Text(
@@ -138,6 +152,10 @@ class _UserDrawerState extends State<UserDrawer> {
                 MaterialPageRoute(builder: (context) => const ContactPage()),
               );
             },
+            // onTap: () async {
+            //   await launch(
+            //       'mailto:${loggedInuser.email}?subject=Thuc hanh mail&body=Quang Linh');
+            // },
           ),
           ListTile(
             leading: const Icon(Icons.logout),

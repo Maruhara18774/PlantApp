@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:maclemylinh_18dh110774/screens/User/contact.dart';
 import 'package:maclemylinh_18dh110774/screens/login.dart';
 import 'package:maclemylinh_18dh110774/screens/register.dart';
 
@@ -71,7 +72,10 @@ class GuestDrawer extends StatelessWidget {
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
             ),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ContactPage()),
+              );
             },
           ),
         ],

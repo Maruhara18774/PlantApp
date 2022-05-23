@@ -5,6 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:maclemylinh_18dh110774/global.dart';
 import 'package:maclemylinh_18dh110774/screens/home.dart';
 import 'package:maclemylinh_18dh110774/screens/register.dart';
+import 'package:maclemylinh_18dh110774/screens/reset_password.dart';
 
 class LoginPage extends StatefulWidget {
   static String routeName = "/login";
@@ -112,8 +113,18 @@ class _LoginPageState extends State<LoginPage> {
                         minimumSize: MaterialStateProperty.all<Size>(
                             Size(MediaQuery.of(context).size.width, 60)),
                       )),
-                  SizedBox(
-                    height: 10,
+                  // SizedBox(
+                  //   height: 1,
+                  // ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: ((context) => ResetPassword())));
+                    },
+                    child: Text(
+                      'Quên mật khẩu ?',
+                      style: TextStyle(fontSize: 14),
+                    ),
                   ),
                   Row(
                     children: [
@@ -179,12 +190,11 @@ class _LoginPageState extends State<LoginPage> {
     if (_formKey.currentState!.validate()) {
       await _auth
           .signInWithEmailAndPassword(email: email, password: password)
-          .then((uid){
-                Fluttertoast.showToast(msg: "Đăng nhập thành công");
-                currentUserGlb.uid = uid.toString();
-                Navigator.pushNamed(context, HomePage.routeName);
-              })
-          .catchError((e) {
+          .then((uid) {
+        Fluttertoast.showToast(msg: "Đăng nhập thành công");
+        currentUserGlb.uid = uid.toString();
+        Navigator.pushNamed(context, HomePage.routeName);
+      }).catchError((e) {
         Fluttertoast.showToast(msg: e!.message);
       });
     }
