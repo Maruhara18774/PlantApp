@@ -24,27 +24,26 @@ class AddressFirebase{
     });
   }
 
-  Future getAddresses(String? uid) async {
+  Future getAddresses() async {
     await Firebase.initializeApp();
     WidgetsFlutterBinding.ensureInitialized();
+    FirebaseAuth auth = FirebaseAuth.instance;
+    String uid = auth.currentUser!.uid.toString();
     List<DiaChi> itemList = [];
-    await addresses.get().then((value) => value.docs.forEach((element) {
-          (element) {
-        itemList.add(DiaChi.fromJson(element.data()));
-      };
-    }));
-    List<DiaChi> itemList1 = itemList.where((element) => element.idKhachHang == uid).toList();
-    return itemList1;
+    var result = await addresses.where('idKhachHang', isEqualTo: uid).get();
+    for( var i = 0 ; i < result.docs.length; i++ ) {
+      itemList.add(DiaChi.fromJson(result.docs[i]));
+    }
+    return itemList;
   }
   Future getAddress(String? id) async {
     await Firebase.initializeApp();
     WidgetsFlutterBinding.ensureInitialized();
     List<DiaChi> itemList = [];
-    await addresses.get().then((value) => value.docs.forEach((element) {
-          (element) {
-        itemList.add(DiaChi.fromJson(element.data()));
-      };
-    }));
+    var result = await addresses.where('id', isEqualTo: id).get();
+    for( var i = 0 ; i < result.docs.length; i++ ) {
+      itemList.add(DiaChi.fromJson(result.docs[i]));
+    }
     DiaChi item = itemList.firstWhere((element) => element.id == id);
     return item;
   }

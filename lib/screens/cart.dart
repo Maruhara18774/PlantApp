@@ -4,6 +4,7 @@ import 'package:maclemylinh_18dh110774/global.dart';
 import 'package:maclemylinh_18dh110774/model/chi_tiet_gio_hang.dart';
 import 'package:maclemylinh_18dh110774/model/san_pham.dart';
 import 'package:maclemylinh_18dh110774/screens/checkout.dart';
+import 'package:maclemylinh_18dh110774/screens/home.dart';
 
 class CartPage extends StatefulWidget {
   static String routeName = "/cart";
@@ -36,7 +37,7 @@ class _CartPageState extends State<CartPage> {
         backgroundColor: Color.fromARGB(255, 29, 86, 110),
         leading: GestureDetector(
           onTap: () {
-            Navigator.pop(context);
+            Navigator.pushNamed(context, HomePage.routeName);
           },
           child: Icon(Icons.arrow_back_ios),
         ),

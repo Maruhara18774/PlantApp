@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class DiaChi {
   String? id;
   String? ten;
@@ -12,10 +14,10 @@ class DiaChi {
         this.idKhachHang});
   factory DiaChi.fromJson(dynamic json) {
     return DiaChi(
-        id: json['id'],
-        ten: json['ten'],
-        sdt: json['sdt'],
-        diaChi: json['diaChi'],
-        idKhachHang: json['idKhachHang']);
+        id: json['id'] as String,
+        ten: json['ten'] as String,
+        sdt: json['sdt'] as String,
+        diaChi: json['diaChi'] as String,
+        idKhachHang: json['idKhachHang'] as String);
   }
 }
