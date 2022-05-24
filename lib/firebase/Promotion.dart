@@ -25,7 +25,5 @@ class DataPromotion{
             (element) {itemList.add(PromotionXD.fromJson(element.data()));}));
     itemList1=itemList.where((element) => element.id==id).toList();
     return itemList1;
-
-
   }
 }
