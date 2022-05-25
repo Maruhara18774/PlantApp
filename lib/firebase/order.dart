@@ -10,10 +10,11 @@ class OrderFirebase{
     String uid = auth.currentUser!.uid.toString();
     DateTime now = DateTime.now();
     String currentDate = DateFormat('yyyyMMddhhmmss').format(now);
+    String currentDate2 = DateFormat('yyyy-MM-dd hh:mm:ss').format(now);
     orders.doc(currentDate + uid).set({
       'idGioHang': currentDate + uid,
       'idGiaoHang': idAddress,
-      'ngayDat': currentDate,
+      'ngayDat': currentDate2,
       'tinhTrang': 'New',
       'idKhachHang': uid,
       'idKhuyenMai': idPromotion,
