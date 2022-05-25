@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:intl/intl.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:maclemylinh_18dh110774/model/khuyen_mai.dart';
 import 'package:maclemylinh_18dh110774/firebase/Promotion.dart';
 import 'package:maclemylinh_18dh110774/screens/Promotion/Promotiondetail.dart';
@@ -60,10 +56,10 @@ class _PromotionState extends State<Promotion> {
         },
         child: Container(
           // padding: EdgeInsets.all(15),
-            margin: EdgeInsets.only(top: 10, left: 16, right: 16),
+            margin: const EdgeInsets.only(top: 10, left: 16, right: 16),
             decoration: BoxDecoration(
                 color: Colors.green.shade200,
-                borderRadius: BorderRadius.all(Radius.circular(10))),
+                borderRadius: const BorderRadius.all(Radius.circular(10))),
             child: ListTile ( //ListTile
               minLeadingWidth: 5,
               subtitle: Row(

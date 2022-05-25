@@ -35,11 +35,11 @@ class _SearchProState extends State<SearchPro> {
     FetchData();
   }
 
-  final searchController = new TextEditingController();
+  final searchController = TextEditingController();
 
   String search = '';
-  Icon icon = Icon(Icons.search);
-  Widget cus = Text('Tìm kiếm');
+  Icon icon = const Icon(Icons.search);
+  Widget cus = const Text('Tìm kiếm');
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -50,7 +50,7 @@ class _SearchProState extends State<SearchPro> {
     if (listProFiller.isNotEmpty) {
       return Scaffold(
           appBar: AppBar(
-            backgroundColor: Color.fromARGB(255, 29, 86, 110),
+            backgroundColor: const Color.fromARGB(255, 29, 86, 110),
             title: TextField(
               controller: searchController,
               onChanged: (value) {
@@ -58,13 +58,13 @@ class _SearchProState extends State<SearchPro> {
                   search = value;
                 });
               },
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   border: InputBorder.none,
                   hintText: 'Nhập tên sản phẩm',
                   hintStyle: TextStyle(
                       color: Color.fromARGB(255, 239, 239, 239), fontSize: 17)),
               textInputAction: TextInputAction.go,
-              style: TextStyle(color: Colors.white, fontSize: 17),
+              style: const TextStyle(color: Colors.white, fontSize: 17),
             ),
           ),
           body: Container(
@@ -81,7 +81,7 @@ class _SearchProState extends State<SearchPro> {
                           return Column(
                             children: [
                               Container(
-                                  color: Color.fromARGB(255, 255, 255, 255),
+                                  color: const Color.fromARGB(255, 255, 255, 255),
                                   child: InkWell(
                                       onTap: () {
                                         Navigator.of(context).push(
@@ -91,14 +91,14 @@ class _SearchProState extends State<SearchPro> {
                                                         listProFiller[index])));
                                       },
                                       child: ListTile(
-                                          contentPadding: EdgeInsets.symmetric(
+                                          contentPadding: const EdgeInsets.symmetric(
                                               horizontal: 15, vertical: 15),
                                           leading: Image(
                                             image: NetworkImage(
                                                 item.hinhAnh.toString()),
                                           ),
                                           title: Row(children: [
-                                            Container(
+                                            SizedBox(
                                               width: 190,
                                               child: Column(
                                                 mainAxisAlignment:
@@ -109,28 +109,28 @@ class _SearchProState extends State<SearchPro> {
                                                   Text(
                                                     '${item.ten}',
                                                     style:
-                                                        TextStyle(fontSize: 17),
+                                                        const TextStyle(fontSize: 17),
                                                   ),
                                                   Text(
-                                                    '${item.tinhtrang == 0 ? 'Hết hàng' : 'Còn hàng'}',
+                                                    item.tinhtrang == 0 ? 'Hết hàng' : 'Còn hàng',
                                                     style: TextStyle(
                                                         fontSize: 16,
                                                         color: item.tinhtrang ==
                                                                 1
-                                                            ? Color.fromARGB(
+                                                            ? const Color.fromARGB(
                                                                 255,
                                                                 22,
                                                                 138,
                                                                 71)
-                                                            : Color.fromARGB(
+                                                            : const Color.fromARGB(
                                                                 255,
                                                                 203,
                                                                 172,
                                                                 168)),
                                                   ),
                                                   Text(
-                                                      '${NumberFormat('###,###').format(int.parse(item.gia.toString()))}',
-                                                      style: TextStyle(
+                                                      NumberFormat('###,###').format(int.parse(item.gia.toString())),
+                                                      style: const TextStyle(
                                                           color: Color.fromARGB(
                                                               255, 174, 12, 0),
                                                           fontSize: 17))
@@ -138,7 +138,7 @@ class _SearchProState extends State<SearchPro> {
                                               ),
                                             ),
                                           ])))),
-                              SizedBox(
+                              const SizedBox(
                                 height: 5,
                               )
                             ],
@@ -149,7 +149,7 @@ class _SearchProState extends State<SearchPro> {
       listProFiller = listProAll;
       return Scaffold(
           appBar: AppBar(
-            backgroundColor: Color.fromARGB(255, 29, 86, 110),
+            backgroundColor: const Color.fromARGB(255, 29, 86, 110),
             title: TextField(
               controller: searchController,
               onChanged: (value) {
@@ -163,7 +163,7 @@ class _SearchProState extends State<SearchPro> {
                   hintStyle:
                       TextStyle(color: Colors.grey.shade400, fontSize: 17)),
               textInputAction: TextInputAction.go,
-              style: TextStyle(color: Colors.white, fontSize: 17),
+              style: const TextStyle(color: Colors.white, fontSize: 17),
             ),
           ),
           body: Container(
@@ -180,7 +180,7 @@ class _SearchProState extends State<SearchPro> {
                           return Column(
                             children: [
                               Container(
-                                  color: Color.fromARGB(255, 255, 255, 255),
+                                  color: const Color.fromARGB(255, 255, 255, 255),
                                   child: InkWell(
                                       onTap: () {
                                         Navigator.of(context).push(
@@ -190,14 +190,14 @@ class _SearchProState extends State<SearchPro> {
                                                         listProFiller[index])));
                                       },
                                       child: ListTile(
-                                          contentPadding: EdgeInsets.symmetric(
+                                          contentPadding: const EdgeInsets.symmetric(
                                               horizontal: 15, vertical: 15),
                                           leading: Image(
                                             image: NetworkImage(
                                                 item.hinhAnh.toString()),
                                           ),
                                           title: Row(children: [
-                                            Container(
+                                            SizedBox(
                                               width: 190,
                                               child: Column(
                                                 mainAxisAlignment:
@@ -208,28 +208,28 @@ class _SearchProState extends State<SearchPro> {
                                                   Text(
                                                     '${item.ten}',
                                                     style:
-                                                        TextStyle(fontSize: 17),
+                                                        const TextStyle(fontSize: 17),
                                                   ),
                                                   Text(
-                                                    '${item.tinhtrang == 0 ? 'Hết hàng' : 'Còn hàng'}',
+                                                    item.tinhtrang == 0 ? 'Hết hàng' : 'Còn hàng',
                                                     style: TextStyle(
                                                         fontSize: 16,
                                                         color: item.tinhtrang ==
                                                                 1
-                                                            ? Color.fromARGB(
+                                                            ? const Color.fromARGB(
                                                                 255,
                                                                 22,
                                                                 138,
                                                                 71)
-                                                            : Color.fromARGB(
+                                                            : const Color.fromARGB(
                                                                 255,
                                                                 203,
                                                                 172,
                                                                 168)),
                                                   ),
                                                   Text(
-                                                      '${NumberFormat('###,###').format(int.parse(item.gia.toString()))}',
-                                                      style: TextStyle(
+                                                      NumberFormat('###,###').format(int.parse(item.gia.toString())),
+                                                      style: const TextStyle(
                                                           color: Color.fromARGB(
                                                               255, 174, 12, 0),
                                                           fontSize: 17))
@@ -237,7 +237,7 @@ class _SearchProState extends State<SearchPro> {
                                               ),
                                             ),
                                           ])))),
-                              SizedBox(
+                              const SizedBox(
                                 height: 5,
                               )
                             ],

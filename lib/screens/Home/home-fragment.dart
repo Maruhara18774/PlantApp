@@ -11,7 +11,7 @@ class _HomeFragmentState extends State<HomeFragment> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text('HomeFragment'),
+      child: const Text('HomeFragment'),
     );
   }
 }

@@ -7,9 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:maclemylinh_18dh110774/model/khach_hang.dart';
-import 'package:maclemylinh_18dh110774/screens/home.dart';
 import 'package:path/path.dart';
-import 'package:image_picker/image_picker.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -49,20 +47,20 @@ class _ProfilePageState extends State<ProfilePage> {
   // our form key
   final _formKey = GlobalKey<FormState>();
   // editing Controller
-  final nameEditingController = new TextEditingController();
-  final birthEditingController = new TextEditingController();
-  final emailEditingController = new TextEditingController();
-  final phoneEditingController = new TextEditingController();
-  final passwordEditingController = new TextEditingController();
-  final confirmPasswordEditingController = new TextEditingController();
-  final avtEditingController = new TextEditingController();
+  final nameEditingController = TextEditingController();
+  final birthEditingController = TextEditingController();
+  final emailEditingController = TextEditingController();
+  final phoneEditingController = TextEditingController();
+  final passwordEditingController = TextEditingController();
+  final confirmPasswordEditingController = TextEditingController();
+  final avtEditingController = TextEditingController();
   //setState
   String _name = "";
   String _birth = "";
-  String _email = "";
-  String _phone = "";
-  String _confirmPassword = "";
-  String _password = "";
+  final String _email = "";
+  final String _phone = "";
+  final String _confirmPassword = "";
+  final String _password = "";
   Future getImage() async {
     var image = await ImagePicker().pickImage(source: ImageSource.gallery);
     setState(() {
@@ -104,7 +102,7 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
         appBar: AppBar(
           title: const Text('Thông tin cá nhân'),
-          backgroundColor: Color.fromARGB(255, 29, 86, 110),
+          backgroundColor: const Color.fromARGB(255, 29, 86, 110),
           leading: IconButton(
             alignment: Alignment.center,
             icon: const Icon(
@@ -116,7 +114,7 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
         body: SafeArea(
           child: Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: SingleChildScrollView(
               child: FutureBuilder(
                   future: fetchData(),
@@ -129,9 +127,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                   child: CircleAvatar(
                                       radius: 100,
                                       backgroundColor:
-                                          Color.fromARGB(255, 255, 255, 255),
+                                          const Color.fromARGB(255, 255, 255, 255),
                                       child: ClipOval(
-                                        child: new SizedBox(
+                                        child: SizedBox(
                                             width: 180.0,
                                             height: 180.0,
                                             child: (_image != null)
@@ -146,9 +144,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                                   )),
                                       ))),
                               Padding(
-                                padding: EdgeInsets.only(top: 0.0),
+                                padding: const EdgeInsets.only(top: 0.0),
                                 child: IconButton(
-                                  icon: Icon(
+                                  icon: const Icon(
                                     Icons.camera_alt,
                                     size: 30.0,
                                   ),
@@ -157,12 +155,12 @@ class _ProfilePageState extends State<ProfilePage> {
                                   },
                                 ),
                               ),
-                              SizedBox(height: 20),
+                              const SizedBox(height: 20),
                               TextFormField(
                                 keyboardType: TextInputType.name,
                                 controller: nameEditingController,
                                 validator: (value) {
-                                  RegExp regex = new RegExp(r'^.{3,}$');
+                                  RegExp regex = RegExp(r'^.{3,}$');
                                   if (value!.isEmpty) {
                                     return ("Vui lòng nhập đầy đủ họ tên");
                                   }
@@ -171,7 +169,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   }
                                   return null;
                                 },
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
                                     hintText: "Họ tên",
                                     prefixIcon: Icon(Icons.account_circle)),
@@ -184,7 +182,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   nameEditingController.text = value!;
                                 },
                               ),
-                              SizedBox(height: 5),
+                              const SizedBox(height: 5),
                               DateTimePicker(
                                   decoration: InputDecoration(
                                       contentPadding: EdgeInsets.zero,
@@ -199,7 +197,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   onChanged: (value) {
                                     _birth = value;
                                   }),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
                               TextFormField(
@@ -216,7 +214,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   }
                                   return null;
                                 },
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
                                     hintText: "Email",
                                     prefixIcon: Icon(Icons.email)),
@@ -224,7 +222,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   emailEditingController.text = value!;
                                 },
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 5,
                               ),
                               TextFormField(
@@ -240,7 +238,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   }
                                   return null;
                                 },
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
                                     hintText: "Số điện thoại",
                                     prefixIcon: Icon(Icons.ad_units)),
@@ -248,10 +246,10 @@ class _ProfilePageState extends State<ProfilePage> {
                                   phoneEditingController.text = value!;
                                 },
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 5,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 5,
                               ),
                               ElevatedButton(
@@ -259,26 +257,26 @@ class _ProfilePageState extends State<ProfilePage> {
                                     updateUser();
                                     uploadPic(context);
                                   },
-                                  child: Text(
+                                  child: const Text(
                                     'Cập nhật',
                                     style: TextStyle(fontSize: 15),
                                   ),
                                   style: ButtonStyle(
                                     backgroundColor:
                                         MaterialStateProperty.all<Color>(
-                                            Color.fromARGB(255, 4, 20, 250)),
+                                            const Color.fromARGB(255, 4, 20, 250)),
                                     minimumSize:
                                         MaterialStateProperty.all<Size>(Size(
                                             MediaQuery.of(context).size.width,
                                             60)),
                                   )),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
                             ],
                             mainAxisAlignment: MainAxisAlignment.center,
                           )
-                        : Text('Đang tải');
+                        : const Text('Đang tải');
                   }),
             ),
           ),

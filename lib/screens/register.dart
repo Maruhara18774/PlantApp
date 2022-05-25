@@ -23,14 +23,14 @@ class _RegisterPageState extends State<RegisterPage> {
   // our form key
   final _formKey = GlobalKey<FormState>();
   // editing Controller
-  final nameEditingController = new TextEditingController();
+  final nameEditingController = TextEditingController();
   final birthEditingController =
-      new TextEditingController(text: DateTime.now().toString());
-  final emailEditingController = new TextEditingController();
-  final phoneEditingController = new TextEditingController();
-  final passwordEditingController = new TextEditingController();
-  final confirmPasswordEditingController = new TextEditingController();
-  final avtEditingController = new TextEditingController(
+      TextEditingController(text: DateTime.now().toString());
+  final emailEditingController = TextEditingController();
+  final phoneEditingController = TextEditingController();
+  final passwordEditingController = TextEditingController();
+  final confirmPasswordEditingController = TextEditingController();
+  final avtEditingController = TextEditingController(
       text:
           "https://i.pinimg.com/474x/76/4d/59/764d59d32f61f0f91dec8c442ab052c5.jpg");
   Future<void> _getValue() async {
@@ -43,38 +43,38 @@ class _RegisterPageState extends State<RegisterPage> {
 
   //setState
   String _name = "";
-  String _birth = "";
-  String _email = "";
-  String _phone = "";
-  String _confirmPassword = "";
-  String _password = "";
+  final String _birth = "";
+  final String _email = "";
+  final String _phone = "";
+  final String _confirmPassword = "";
+  final String _password = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: SingleChildScrollView(
             child: Column(
               children: [
                 Form(
                     key: _formKey,
-                    child: Image(
+                    child: const Image(
                         image: NetworkImage(
                             'https://cdn-icons-png.flaticon.com/512/449/449350.png',
                             scale: 4.5))),
-                Text('Plants',
+                const Text('Plants',
                     style: TextStyle(
                         color: Color.fromARGB(255, 33, 171, 165),
                         fontSize: 30.0,
                         fontWeight: FontWeight.bold)),
-                SizedBox(height: 5),
-                SizedBox(height: 20),
+                const SizedBox(height: 5),
+                const SizedBox(height: 20),
                 TextFormField(
                   keyboardType: TextInputType.name,
                   controller: nameEditingController,
                   validator: (value) {
-                    RegExp regex = new RegExp(r'^.{3,}$');
+                    RegExp regex = RegExp(r'^.{3,}$');
                     if (value!.isEmpty) {
                       return ("Vui lòng nhập đầy đủ họ tên");
                     }
@@ -83,7 +83,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     }
                     return null;
                   },
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: "Họ tên",
                       prefixIcon: Icon(Icons.account_circle)),
@@ -96,7 +96,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     nameEditingController.text = value!;
                   },
                 ),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
                 DateTimePicker(
                   type: DateTimePickerType.date,
                   // controller: birthEditingController,
@@ -114,7 +114,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   //   birthEditingController.text = value!;
                   // },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 TextFormField(
@@ -130,7 +130,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     }
                     return null;
                   },
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: "Email",
                       prefixIcon: Icon(Icons.email)),
@@ -138,7 +138,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     emailEditingController.text = value!;
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 TextFormField(
@@ -154,7 +154,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     }
                     return null;
                   },
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: "Số điện thoại",
                       prefixIcon: Icon(Icons.ad_units)),
@@ -162,22 +162,23 @@ class _RegisterPageState extends State<RegisterPage> {
                     phoneEditingController.text = value!;
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 TextFormField(
                   controller: passwordEditingController,
                   obscureText: true,
                   validator: (value) {
-                    RegExp regex = new RegExp(r'^.{6,}$');
+                    RegExp regex = RegExp(r'^.{6,}$');
                     if (value!.isEmpty) {
                       return ("Vui lòng nhập mật khẩu");
                     }
                     if (!regex.hasMatch(value)) {
                       return ("Vui lòng nhập mật khẩu trên 6 kí tự");
                     }
+                    return null;
                   },
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: "Mật khẩu",
                       prefixIcon: Icon(Icons.lock_outline_rounded)),
@@ -185,7 +186,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     passwordEditingController.text = value!;
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 TextFormField(
@@ -198,7 +199,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     }
                     return null;
                   },
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: "Xác nhận mật khẩu",
                       prefixIcon: Icon(Icons.lock_outline_rounded)),
@@ -206,7 +207,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     confirmPasswordEditingController.text = value!;
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 ElevatedButton(
@@ -214,17 +215,17 @@ class _RegisterPageState extends State<RegisterPage> {
                       signUp(emailEditingController.text,
                           passwordEditingController.text);
                     },
-                    child: Text(
+                    child: const Text(
                       'Đăng kí',
                       style: TextStyle(fontSize: 15),
                     ),
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(
-                          Color.fromARGB(255, 33, 171, 165)),
+                          const Color.fromARGB(255, 33, 171, 165)),
                       minimumSize: MaterialStateProperty.all<Size>(
                           Size(MediaQuery.of(context).size.width, 60)),
                     )),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
@@ -232,34 +233,34 @@ class _RegisterPageState extends State<RegisterPage> {
                     Container(
                         height: 40,
                         width: 40,
-                        margin: EdgeInsets.only(left: 5, right: 5),
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
+                        margin: const EdgeInsets.only(left: 5, right: 5),
+                        padding: const EdgeInsets.all(10),
+                        decoration: const BoxDecoration(
                             color: Color(0xFFF5F6F9), shape: BoxShape.circle),
                         child: SvgPicture.network(
                             'https://res.cloudinary.com/dhi3bjn0s/image/upload/v1648739498/test/Flutter_THB1/facebook-2_jifbrg.svg')),
                     Container(
                         height: 40,
                         width: 40,
-                        margin: EdgeInsets.only(left: 5, right: 5),
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
+                        margin: const EdgeInsets.only(left: 5, right: 5),
+                        padding: const EdgeInsets.all(10),
+                        decoration: const BoxDecoration(
                             color: Color(0xFFF5F6F9), shape: BoxShape.circle),
                         child: SvgPicture.network(
                             'https://res.cloudinary.com/dhi3bjn0s/image/upload/v1648739498/test/Flutter_THB1/google-icon_vezhnw.svg')),
                     Container(
                         height: 40,
                         width: 40,
-                        margin: EdgeInsets.only(left: 5, right: 5),
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
+                        margin: const EdgeInsets.only(left: 5, right: 5),
+                        padding: const EdgeInsets.all(10),
+                        decoration: const BoxDecoration(
                             color: Color(0xFFF5F6F9), shape: BoxShape.circle),
                         child: SvgPicture.network(
                             'https://res.cloudinary.com/dhi3bjn0s/image/upload/v1648739498/test/Flutter_THB1/twitter_duwfvq.svg')),
                   ],
                   mainAxisAlignment: MainAxisAlignment.center,
                 ),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
               ],
               mainAxisAlignment: MainAxisAlignment.center,
             ),
@@ -329,6 +330,6 @@ class _RegisterPageState extends State<RegisterPage> {
         .set(userModel.toMap());
     Fluttertoast.showToast(msg: "Đăng kí thành công");
     Navigator.pushAndRemoveUntil((context),
-        MaterialPageRoute(builder: (context) => HomePage()), (route) => false);
+        MaterialPageRoute(builder: (context) => const HomePage()), (route) => false);
   }
 }

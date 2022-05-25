@@ -23,9 +23,9 @@ class _CartPageState extends State<CartPage> {
     super.initState();
     _listCTGH = cartCTGioHang;
     _listSP = cartSanPhamGlb;
-    _listCTGH.forEach((detail) {
+    for (var detail in _listCTGH) {
       sum = sum + detail.tongTien!;
-    });
+    }
   }
 
   @override
@@ -34,22 +34,22 @@ class _CartPageState extends State<CartPage> {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 29, 86, 110),
+        backgroundColor: const Color.fromARGB(255, 29, 86, 110),
         leading: GestureDetector(
           onTap: () {
             Navigator.pushNamed(context, HomePage.routeName);
           },
-          child: Icon(Icons.arrow_back_ios),
+          child: const Icon(Icons.arrow_back_ios),
         ),
-        title: Text("Giỏ hàng"),
+        title: const Text("Giỏ hàng"),
       ),
       bottomNavigationBar: Row(
         children: [
-          Container(width: (width*1)/2,child: Padding(
+          SizedBox(width: (width*1)/2,child: Padding(
             padding: const EdgeInsets.only(left: 20.0),
             child: Text("Total: " + sum.toString()),
           )),
-          Container(
+          SizedBox(
             width: (width*1)/2,
             height: 50.0,
             child: ElevatedButton(
@@ -60,9 +60,9 @@ class _CartPageState extends State<CartPage> {
                   Fluttertoast.showToast(msg: "Giỏ hàng trống.");
                 }
               },
-              child: Text("THANH TOÁN"),
+              child: const Text("THANH TOÁN"),
               style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Color.fromARGB(255, 29, 86, 110)),
+                  backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 29, 86, 110)),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(0.0),
@@ -74,7 +74,7 @@ class _CartPageState extends State<CartPage> {
         ],
       ),
       body: SafeArea(
-        child: Container(
+        child: SizedBox(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             child: Column(children: [
@@ -85,25 +85,25 @@ class _CartPageState extends State<CartPage> {
                   itemBuilder: (context, index) {
                     return Row(
                       children: [
-                        SizedBox(height: 5),
+                        const SizedBox(height: 5),
                         SizedBox(
                             width: 100,
                             height: 100,
-                            child: Image.network(this._listSP[index].hinhAnh!)),
+                            child: Image.network(_listSP[index].hinhAnh!)),
                         SizedBox(
                           width: MediaQuery.of(context).size.width - 100,
                           height: 100,
                           child: Column(
                             children: [
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
                               Text(
-                                this._listSP[index].ten!,
-                                style: TextStyle(color: Colors.black),
+                                _listSP[index].ten!,
+                                style: const TextStyle(color: Colors.black),
                               ),
                               Text(
-                                  this._listSP[index].gia.toString() +
+                                  _listSP[index].gia.toString() +
                                       " VND",
                                   maxLines: 5,
                                   style: const TextStyle(
@@ -115,7 +115,7 @@ class _CartPageState extends State<CartPage> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     ElevatedButton(onPressed: (){
-                                      this.setState(() {
+                                      setState(() {
                                         if((_listCTGH[index].soLuong! - 1)!= 0){
                                           _listCTGH[index].soLuong = _listCTGH[index].soLuong! - 1;
                                           _listCTGH[index].tongTien = _listCTGH[index].soLuong!*_listSP[index].gia!.toDouble();
@@ -128,21 +128,21 @@ class _CartPageState extends State<CartPage> {
                                         }
                                       });
                                     },
-                                      child: Icon(Icons.remove,color: Colors.black,),
+                                      child: const Icon(Icons.remove,color: Colors.black,),
                                       style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white),
                                           elevation: MaterialStateProperty.all(0)),),
                                     const SizedBox(width: 10,),
                                     Text(_listCTGH[index].soLuong.toString()),
                                     const SizedBox(width: 10,),
                                     ElevatedButton(onPressed: (){
-                                      this.setState(() {
+                                      setState(() {
                                         _listCTGH[index].soLuong = _listCTGH[index].soLuong! + 1;
                                         _listCTGH[index].tongTien = _listCTGH[index].tongTien! + _listSP[index].gia!.toDouble();
                                         sum = sum + _listSP[index].gia!.toDouble();
                                       });
 
                                     },
-                                      child: Icon(Icons.add,color: Colors.black,),
+                                      child: const Icon(Icons.add,color: Colors.black,),
                                       style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white),
                                           elevation: MaterialStateProperty.all(0)),),
                                   ],

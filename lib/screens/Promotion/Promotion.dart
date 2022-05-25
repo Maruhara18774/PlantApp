@@ -1,16 +1,13 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:maclemylinh_18dh110774/model/khuyen_mai.dart';
 import 'package:maclemylinh_18dh110774/firebase/Promotion.dart';
 import 'package:maclemylinh_18dh110774/screens/Promotion/Promotiondetail.dart';
 
 
 class Promotion extends StatefulWidget {
-  Promotion({Key? key}) : super(key: key);
+  const Promotion({Key? key}) : super(key: key);
 
   @override
   _PromotionState createState() => _PromotionState();
@@ -65,8 +62,8 @@ class _PromotionState extends State<Promotion> {
         child: Container(
           width: width,
         // padding: EdgeInsets.all(15),
-        margin: EdgeInsets.only(top: 10, left: 16, right: 16),
-        decoration: BoxDecoration(
+        margin: const EdgeInsets.only(top: 10, left: 16, right: 16),
+        decoration: const BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(10))),
             child: ListTile ( //ListTile
@@ -81,7 +78,7 @@ class _PromotionState extends State<Promotion> {
                     style: TextStyle(color: Colors.grey.shade600),
                   ),
                   Text(
-                    '${DateFormat('dd/MM/yyyy').format( lsPromo[index].ngayketthuc!.toDate())}',
+                    DateFormat('dd/MM/yyyy').format( lsPromo[index].ngayketthuc!.toDate()),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(color: Colors.grey.shade600),
@@ -94,7 +91,7 @@ class _PromotionState extends State<Promotion> {
                 '${lsPromo[index].tenkhuyenmai} | Khuyến mãi ${lsPromo[index].giamgia}% giá trị đơn hàng ',
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 16,
                 ),

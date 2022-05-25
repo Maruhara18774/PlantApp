@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:maclemylinh_18dh110774/global.dart';
 import 'package:maclemylinh_18dh110774/model/khach_hang.dart';
 import 'package:maclemylinh_18dh110774/screens/User/contact.dart';
 import 'package:maclemylinh_18dh110774/screens/User/history.dart';
@@ -34,7 +33,7 @@ class _UserDrawerState extends State<UserDrawer> {
         .doc(user!.uid)
         .get()
         .then((value) {
-      this.loggedInuser = KhachHang.fromMap(value.data());
+      loggedInuser = KhachHang.fromMap(value.data());
       setState(() {});
     });
     return loggedInuser;
@@ -47,14 +46,14 @@ class _UserDrawerState extends State<UserDrawer> {
         padding: EdgeInsets.zero,
         children: <Widget>[
           DrawerHeader(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Color.fromARGB(255, 29, 86, 110),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Center(
-                  child: Container(
+                  child: SizedBox(
                       height: 90,
                       width: 90,
                       // child: CircleAvatar(
@@ -74,14 +73,14 @@ class _UserDrawerState extends State<UserDrawer> {
                 ),
                 Center(
                   child: Text("${loggedInuser.hoten}",
-                      style: TextStyle(
+                      style: const TextStyle(
                           color: Color.fromARGB(255, 255, 255, 255),
                           fontWeight: FontWeight.w500,
                           fontSize: 16)),
                 ),
                 Center(
                   child: Text("${loggedInuser.email}",
-                      style: TextStyle(
+                      style: const TextStyle(
                           color: Color.fromARGB(255, 255, 255, 255),
                           fontWeight: FontWeight.bold,
                           fontSize: 12)),
@@ -176,6 +175,6 @@ class _UserDrawerState extends State<UserDrawer> {
   Future<void> logout(BuildContext context) async {
     await FirebaseAuth.instance.signOut();
     Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (context) => LoginPage()));
+        .pushReplacement(MaterialPageRoute(builder: (context) => const LoginPage()));
   }
 }

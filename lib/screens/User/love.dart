@@ -13,7 +13,7 @@ class _LovePageState extends State<LovePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Yêu thích'),
-        backgroundColor: Color.fromARGB(255, 29, 86, 110),
+        backgroundColor: const Color.fromARGB(255, 29, 86, 110),
         leading: IconButton(
           alignment: Alignment.center,
           icon: const Icon(

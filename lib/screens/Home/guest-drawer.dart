@@ -16,14 +16,14 @@ class GuestDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           DrawerHeader(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Color.fromARGB(255, 29, 86, 110),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
+              children: const <Widget>[
                 Center(
-                  child: Container(
+                  child: SizedBox(
                     height: 120,
                     width: 120,
                     child: CircleAvatar(
@@ -36,7 +36,7 @@ class GuestDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.login),
-            textColor: Color.fromARGB(255, 1, 1, 1),
+            textColor: const Color.fromARGB(255, 1, 1, 1),
             title: const Text(
               'Đăng nhập',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),

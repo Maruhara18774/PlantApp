@@ -1,9 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:maclemylinh_18dh110774/model/News.dart';
 import 'package:maclemylinh_18dh110774/firebase/News.dart';
 import 'package:maclemylinh_18dh110774/screens/News/Newdetail.dart';
@@ -45,14 +41,14 @@ class _NewsState extends State<NewsState> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 29, 86, 110),
+        backgroundColor: const Color.fromARGB(255, 29, 86, 110),
         leading: GestureDetector(
           onTap: () {
             Navigator.pop(context);
           },
-          child: Icon(Icons.arrow_back_ios),
+          child: const Icon(Icons.arrow_back_ios),
         ),
-        title: Text("Giỏ hàng"),
+        title: const Text("Giỏ hàng"),
       ),
       body: Material(
         child:  Container(
@@ -72,11 +68,11 @@ class _NewsState extends State<NewsState> {
                               builder: (context) => DetailNews(news: lsNews[index])));
                     },
                     child: Container(
-                      padding: EdgeInsets.all(7),
-                      margin: EdgeInsets.only(top: 10, left: 16, right: 16),
+                      padding: const EdgeInsets.all(7),
+                      margin: const EdgeInsets.only(top: 10, left: 16, right: 16),
                       decoration: BoxDecoration(
                           color: Colors.lightGreen.shade100,
-                          borderRadius: BorderRadius.all(Radius.circular(15))),
+                          borderRadius: const BorderRadius.all(Radius.circular(15))),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,7 +82,7 @@ class _NewsState extends State<NewsState> {
                             width: 80,
                             decoration: ShapeDecoration(
                                 color: Colors.grey.shade100,
-                                shape: RoundedRectangleBorder(
+                                shape: const RoundedRectangleBorder(
                                     borderRadius: BorderRadius.all(Radius.circular(7))),
                                 image: DecorationImage(
                                     image: NetworkImage('${lsNews[index].imageNews}'),
@@ -94,7 +90,7 @@ class _NewsState extends State<NewsState> {
                           ),
                           Expanded(
                               child: Container(
-                                  padding: EdgeInsets.only(top: 10, left: 10, right: 10),
+                                  padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -103,10 +99,10 @@ class _NewsState extends State<NewsState> {
                                         '${lsNews[index].nameNews}',
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontWeight: FontWeight.bold, fontSize: 16),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 3,
                                       ),
                                       Text(

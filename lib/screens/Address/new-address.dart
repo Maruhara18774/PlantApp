@@ -1,6 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:maclemylinh_18dh110774/screens/Address/address.dart';
 
 import '../../firebase/address.dart';
@@ -30,54 +29,54 @@ class _NewAddressPageState extends State<NewAddressPage> {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 29, 86, 110),
-        title: Text("Thêm địa chỉ giao hàng"),
+        backgroundColor: const Color.fromARGB(255, 29, 86, 110),
+        title: const Text("Thêm địa chỉ giao hàng"),
         automaticallyImplyLeading: false,
       ),
       resizeToAvoidBottomInset: false,
       body: SafeArea(
-        child: Container(
+        child: SizedBox(
           width: width,
           child: Padding(
             padding: const EdgeInsets.all(20.0),
             child: Column(
               children: [
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 TextFormField(
                   keyboardType: TextInputType.name,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: "Tên người nhận"),
                   onChanged: (value) {_name = value;},
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 TextFormField(
                   keyboardType: TextInputType.phone,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: "Số điện thoại"),
                   onChanged: (value) {_phone = value;},
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 TextFormField(
                   keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: "Địa chỉ"),
                   onChanged: (value) {_address = value;},
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 ElevatedButton(
                     onPressed: () {
                       AddAddress(_name, _phone, _address);
                     },
-                    child: Text(
+                    child: const Text(
                       'Thêm địa chỉ',
                       style: TextStyle(fontSize: 15),
                     ),
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(
-                          Color.fromARGB(255, 33, 171, 165)),
+                          const Color.fromARGB(255, 33, 171, 165)),
                       minimumSize: MaterialStateProperty.all<Size>(
                           Size(MediaQuery.of(context).size.width, 60)),
                     )),

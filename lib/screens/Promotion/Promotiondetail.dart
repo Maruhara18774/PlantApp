@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:maclemylinh_18dh110774/screens/Home/sale-fragment.dart';
 
 import '../../model/khuyen_mai.dart';
 
@@ -17,12 +16,12 @@ class _ItemPromotionState extends State<ItemPromotion> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
-          title: Text(
+          title: const Text(
             'Thông Tin Ưu Đãi',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           flexibleSpace: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 color: Color.fromARGB(255, 29, 86, 110),
             ),
           ),
@@ -31,19 +30,19 @@ class _ItemPromotionState extends State<ItemPromotion> {
             height: size.height,
             color: Colors.grey.shade300,
             width: size.width,
-            padding: EdgeInsets.only(left: 15, right: 15),
+            padding: const EdgeInsets.only(left: 15, right: 15),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Container(
-                      padding: EdgeInsets.all(20),
+                      padding: const EdgeInsets.all(20),
                       width: size.width,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(15))),
                       child: Column(
@@ -84,8 +83,8 @@ class _ItemPromotionState extends State<ItemPromotion> {
                             onTap : () {
                               Clipboard.setData(
                                   ClipboardData(text: '${widget.promotion!.id}'));
-                              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                content: const Text('Sao chép thành công !'),
+                              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                content: Text('Sao chép thành công !'),
                               ));
                             },
 
@@ -121,7 +120,7 @@ class _ItemPromotionState extends State<ItemPromotion> {
 
                       )),
 
-                  SizedBox(
+                  const SizedBox(
                     height: 7,
                   ),
 
@@ -174,21 +173,21 @@ class _ItemPromotionState extends State<ItemPromotion> {
                     height: 5,
                   ),*/
                   Container(
-                      padding: EdgeInsets.all(20),
+                      padding: const EdgeInsets.all(20),
                       width: size.width,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(15))),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             'Điều khoản sử dụng:',
                             style: TextStyle(
                                 fontSize: 16, fontWeight: FontWeight.bold),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Container(
@@ -201,7 +200,7 @@ class _ItemPromotionState extends State<ItemPromotion> {
                                       size: 12,
                                       color: Colors.teal.shade800,
                                     ),
-                                    title: Text(
+                                    title: const Text(
                                         'Voucher không áp dụng đồng thời với các chương trình khuyến mãi khác.')),
 
                                 ListTile(
@@ -211,7 +210,7 @@ class _ItemPromotionState extends State<ItemPromotion> {
                                       size: 12,
                                       color: Colors.teal.shade800,
                                     ),
-                                    title: Text(
+                                    title: const Text(
                                         'Voucher áp dụng cho nhiều lần thanh toán.')),
                                 ListTile(
                                     minLeadingWidth: 5,
@@ -231,7 +230,7 @@ class _ItemPromotionState extends State<ItemPromotion> {
                                       size: 12,
                                       color: Colors.teal.shade800,
                                     ),
-                                    title: Text(
+                                    title: const Text(
                                         'Voucher chỉ áp dụng quý khách đến mua hàng trực tiếp tại cửa hàng.')),
                                 ListTile(
                                     minLeadingWidth: 5,
@@ -240,7 +239,7 @@ class _ItemPromotionState extends State<ItemPromotion> {
                                       size: 12,
                                       color: Colors.teal.shade800,
                                     ),
-                                    title: Text(
+                                    title: const Text(
                                         'Voucher không được hoàn lại và không có giá trị quy đổi thành tiền mặt.')),
 
                               ],
@@ -251,7 +250,7 @@ class _ItemPromotionState extends State<ItemPromotion> {
                         ],
 
                       )),
-                  SizedBox(
+                  const SizedBox(
                     height: 50,
                   ),
 

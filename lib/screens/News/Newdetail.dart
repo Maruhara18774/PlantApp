@@ -15,8 +15,8 @@ class _DetailNewsState extends State<DetailNews> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 29, 86, 110),
-        title: Text(
+        backgroundColor: const Color.fromARGB(255, 29, 86, 110),
+        title: const Text(
           'Thông tin cây cảnh',
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.normal),
         ),
@@ -27,19 +27,19 @@ class _DetailNewsState extends State<DetailNews> {
                 children: [
                   Container(
                     height: size.height * (1 / 3) + 50,
-                    decoration: ShapeDecoration(
+                    decoration: const ShapeDecoration(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(Radius.circular(15)))),
                     child: FadeInImage(
-                      placeholder: AssetImage('./assets/images/load.gif'),
+                      placeholder: const AssetImage('./assets/images/load.gif'),
                       image: NetworkImage('${widget.news!.imageNews}'),
                       fit: BoxFit.fill,
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
                     width: size.width,
-                    decoration: ShapeDecoration(
+                    decoration: const ShapeDecoration(
                         color: Colors.white,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
@@ -59,7 +59,7 @@ class _DetailNewsState extends State<DetailNews> {
                               fontFamily: 'Lemonada',
                               color: Colors.teal.shade900),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         Text(

@@ -1,4 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:maclemylinh_18dh110774/global.dart';
@@ -24,17 +23,17 @@ class _HomePageState extends State<HomePage> {
   int selectedIndex = 0;
   bool isLogin = false;
   List<Widget> screens = [
-    HomeFragment(),
-    ProductsFragment(),
-    NotificationFragment(),
-    Promotion()
+    const HomeFragment(),
+    const ProductsFragment(),
+    const NotificationFragment(),
+    const Promotion()
   ];
 
   @override
   void initState() {
     super.initState();
     if (currentUserGlb.uid != '') {
-      this.isLogin = true;
+      isLogin = true;
     }
   }
 
@@ -46,9 +45,9 @@ class _HomePageState extends State<HomePage> {
               IconButton(
                   onPressed: () {
                     Navigator.of(context).push(
-                        MaterialPageRoute(builder: ((context) => SearchPro())));
+                        MaterialPageRoute(builder: ((context) => const SearchPro())));
                   },
-                  icon: Icon(Icons.search_sharp)),
+                  icon: const Icon(Icons.search_sharp)),
               IconButton(
                   onPressed: () {
                     if (currentUserGlb.uid != '') {
@@ -57,9 +56,9 @@ class _HomePageState extends State<HomePage> {
                       Fluttertoast.showToast(msg: "Vui lòng đăng nhập");
                     }
                   },
-                  icon: Icon(Icons.shopping_basket))
+                  icon: const Icon(Icons.shopping_basket))
             ],
-            backgroundColor: Color.fromARGB(255, 29, 86, 110),
+            backgroundColor: const Color.fromARGB(255, 29, 86, 110),
             title: const Center(
               child: Text(
                 'Plants',
@@ -71,21 +70,21 @@ class _HomePageState extends State<HomePage> {
           hoverColor: Colors.white, // tab button hover color
           tabBorderRadius: 0,
           tabActiveBorder: Border.all(
-              color: Color.fromARGB(255, 29, 86, 110),
+              color: const Color.fromARGB(255, 29, 86, 110),
               width: 1), // tab button border
           curve: Curves.decelerate,
-          duration: Duration(milliseconds: 100), // tab animation duration
+          duration: const Duration(milliseconds: 100), // tab animation duration
           gap: 8, // the tab button gap between icon and text
-          color: Color.fromARGB(255, 255, 255, 255), // unselected icon color
+          color: const Color.fromARGB(255, 255, 255, 255), // unselected icon color
           activeColor:
-              Color.fromARGB(255, 22, 58, 95), // selected icon and text color
+              const Color.fromARGB(255, 22, 58, 95), // selected icon and text color
           iconSize: 30, // tab button icon size
           tabBackgroundColor: Colors.white, // selected tab background color
-          padding: EdgeInsets.symmetric(
+          padding: const EdgeInsets.symmetric(
               horizontal: 20, vertical: 10), // navigation bar padding,
-          backgroundColor: Color.fromARGB(255, 29, 86, 110),
-          tabs: [
-            const GButton(
+          backgroundColor: const Color.fromARGB(255, 29, 86, 110),
+          tabs: const [
+            GButton(
               icon: Icons.home,
               text: 'Trang chủ',
             ),
@@ -109,6 +108,6 @@ class _HomePageState extends State<HomePage> {
           },
         ),
         drawer:
-            this.isLogin ? UserDrawer() : GuestDrawer(homeContext: context));
+            isLogin ? const UserDrawer() : GuestDrawer(homeContext: context));
   }
 }

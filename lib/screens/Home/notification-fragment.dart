@@ -11,7 +11,7 @@ class _NotificationFragmentState extends State<NotificationFragment> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text('Noti Page'),
+      child: const Text('Noti Page'),
     );
   }
 }

@@ -23,8 +23,8 @@ class _ItemProductState extends State<ItemProduct> {
     //     price: widget.detailProduct.pricePro,
     //     images: widget.detailProduct.imgProduct);
     return Container(
-      decoration: BoxDecoration(),
-      padding: EdgeInsets.all(5),
+      decoration: const BoxDecoration(),
+      padding: const EdgeInsets.all(5),
       child: InkWell(
         onTap: () {
           Navigator.of(context).push(MaterialPageRoute(
@@ -40,11 +40,11 @@ class _ItemProductState extends State<ItemProduct> {
                     BoxShadow(
                         color: Colors.grey.withOpacity(0.5),
                         blurRadius: 3,
-                        offset: Offset(1, 1))
+                        offset: const Offset(1, 1))
                   ]),
               child: Column(children: [
                 Container(
-                  margin: EdgeInsets.all(5),
+                  margin: const EdgeInsets.all(5),
                   height: 150,
                   child: Center(
                       heightFactor: 0.7,
@@ -54,7 +54,7 @@ class _ItemProductState extends State<ItemProduct> {
                       )),
                 ),
                 Container(
-                  padding: EdgeInsets.all(15),
+                  padding: const EdgeInsets.all(15),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,7 +68,7 @@ class _ItemProductState extends State<ItemProduct> {
                             color: Colors.teal.shade800),
                       ),
                       Text(
-                          '${widget.sanPham.tinhtrang == 1 ? 'Còn hàng' : 'Hết hàng'}',
+                          widget.sanPham.tinhtrang == 1 ? 'Còn hàng' : 'Hết hàng',
                           style: TextStyle(
                               fontSize: 14, color: Colors.grey.shade600)),
                       Row(
@@ -76,7 +76,7 @@ class _ItemProductState extends State<ItemProduct> {
                         children: [
                           Text(
                             '${widget.sanPham.gia}',
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 16,
                                 color: Color.fromARGB(255, 0, 0, 0),
                                 fontWeight: FontWeight.bold),

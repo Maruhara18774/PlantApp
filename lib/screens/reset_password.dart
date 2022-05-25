@@ -10,14 +10,14 @@ class ResetPassword extends StatefulWidget {
 
 class _ResetPasswordState extends State<ResetPassword> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController emailController = new TextEditingController();
+  final TextEditingController emailController = TextEditingController();
   String _email = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Quên mật khẩu ?'),
-        backgroundColor: Color.fromARGB(255, 29, 86, 110),
+        title: const Text('Quên mật khẩu ?'),
+        backgroundColor: const Color.fromARGB(255, 29, 86, 110),
       ),
       body: SafeArea(
         child: Padding(
@@ -40,7 +40,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                       return null;
                     },
                     controller: emailController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: "Nhập email",
                         prefixIcon: Icon(Icons.mail_outline)),
@@ -50,7 +50,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                       });
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
                   ElevatedButton(
@@ -59,13 +59,13 @@ class _ResetPasswordState extends State<ResetPassword> {
                             .sendPasswordResetEmail(email: emailController.text)
                             .then((value) => Navigator.of(context).pop());
                       },
-                      child: Text(
+                      child: const Text(
                         'Đổi mật khẩu',
                         style: TextStyle(fontSize: 15),
                       ),
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all<Color>(
-                            Color.fromARGB(255, 33, 171, 165)),
+                            const Color.fromARGB(255, 33, 171, 165)),
                         minimumSize: MaterialStateProperty.all<Size>(
                             Size(MediaQuery.of(context).size.width, 60)),
                       )),

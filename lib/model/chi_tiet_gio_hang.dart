@@ -6,12 +6,7 @@ class ChiTietGioHang {
   double? tongTien;
 
   ChiTietGioHang(
-      {this.id,
-        this.idGioHang,
-        this.idSanPham,
-        this.soLuong,
-        this.tongTien
-      });
+      {this.id, this.idGioHang, this.idSanPham, this.soLuong, this.tongTien});
 
   factory ChiTietGioHang.fromMap(map) {
     return ChiTietGioHang(
@@ -19,7 +14,7 @@ class ChiTietGioHang {
         idGioHang: map['idGioHang'] as String,
         idSanPham: map['idSanPham'] as int,
         soLuong: map['soLuong'] as int,
-        tongTien: map['tong'] as double);
+        tongTien: map['tong'] as double?);
   }
   Map<String, dynamic> toMap() {
     return {

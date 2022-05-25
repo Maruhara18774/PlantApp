@@ -19,8 +19,8 @@ class _LoginPageState extends State<LoginPage> {
   // form key
   final _formKey = GlobalKey<FormState>();
   //edit controller
-  final TextEditingController emailController = new TextEditingController();
-  final TextEditingController passwordController = new TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   //setState
   String _email = "";
   String _password = "";
@@ -39,17 +39,17 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 children: [
                   Container(
-                      child: Image(
+                      child: const Image(
                           image: NetworkImage(
                               'https://cdn-icons-png.flaticon.com/512/449/449350.png',
                               scale: 3.5))),
-                  Text('Plants',
+                  const Text('Plants',
                       style: TextStyle(
                           color: Color.fromARGB(255, 33, 171, 165),
                           fontSize: 30.0,
                           fontWeight: FontWeight.bold)),
-                  SizedBox(height: 5),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 5),
+                  const SizedBox(height: 20),
                   TextFormField(
                     keyboardType: TextInputType.emailAddress,
                     validator: (value) {
@@ -63,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
                       return null;
                     },
                     controller: emailController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: "Email",
                         prefixIcon: Icon(Icons.mail_outline)),
@@ -73,20 +73,21 @@ class _LoginPageState extends State<LoginPage> {
                       });
                     },
                   ),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   TextFormField(
                     controller: passwordController,
                     obscureText: true,
                     validator: (value) {
-                      RegExp regex = new RegExp(r'^.{6,}$');
+                      RegExp regex = RegExp(r'^.{6,}$');
                       if (value!.isEmpty) {
                         return ("Vui lòng nhập mật khẩu");
                       }
                       if (!regex.hasMatch(value)) {
                         return ("Vui lòng nhập mật khẩu trên 6 kí tự");
                       }
+                      return null;
                     },
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: "Mật khẩu",
                         prefixIcon: Icon(Icons.lock_outline_rounded)),
@@ -96,20 +97,20 @@ class _LoginPageState extends State<LoginPage> {
                       });
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
                   ElevatedButton(
                       onPressed: () {
                         signIn(emailController.text, passwordController.text);
                       },
-                      child: Text(
+                      child: const Text(
                         'Đăng nhập',
                         style: TextStyle(fontSize: 15),
                       ),
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all<Color>(
-                            Color.fromARGB(255, 33, 171, 165)),
+                            const Color.fromARGB(255, 33, 171, 165)),
                         minimumSize: MaterialStateProperty.all<Size>(
                             Size(MediaQuery.of(context).size.width, 60)),
                       )),
@@ -119,9 +120,9 @@ class _LoginPageState extends State<LoginPage> {
                   TextButton(
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: ((context) => ResetPassword())));
+                          builder: ((context) => const ResetPassword())));
                     },
-                    child: Text(
+                    child: const Text(
                       'Quên mật khẩu ?',
                       style: TextStyle(fontSize: 14),
                     ),
@@ -131,44 +132,44 @@ class _LoginPageState extends State<LoginPage> {
                       Container(
                           height: 40,
                           width: 40,
-                          margin: EdgeInsets.only(left: 5, right: 5),
-                          padding: EdgeInsets.all(10),
-                          decoration: BoxDecoration(
+                          margin: const EdgeInsets.only(left: 5, right: 5),
+                          padding: const EdgeInsets.all(10),
+                          decoration: const BoxDecoration(
                               color: Color(0xFFF5F6F9), shape: BoxShape.circle),
                           child: SvgPicture.network(
                               'https://res.cloudinary.com/dhi3bjn0s/image/upload/v1648739498/test/Flutter_THB1/facebook-2_jifbrg.svg')),
                       Container(
                           height: 40,
                           width: 40,
-                          margin: EdgeInsets.only(left: 5, right: 5),
-                          padding: EdgeInsets.all(10),
-                          decoration: BoxDecoration(
+                          margin: const EdgeInsets.only(left: 5, right: 5),
+                          padding: const EdgeInsets.all(10),
+                          decoration: const BoxDecoration(
                               color: Color(0xFFF5F6F9), shape: BoxShape.circle),
                           child: SvgPicture.network(
                               'https://res.cloudinary.com/dhi3bjn0s/image/upload/v1648739498/test/Flutter_THB1/google-icon_vezhnw.svg')),
                       Container(
                           height: 40,
                           width: 40,
-                          margin: EdgeInsets.only(left: 5, right: 5),
-                          padding: EdgeInsets.all(10),
-                          decoration: BoxDecoration(
+                          margin: const EdgeInsets.only(left: 5, right: 5),
+                          padding: const EdgeInsets.all(10),
+                          decoration: const BoxDecoration(
                               color: Color(0xFFF5F6F9), shape: BoxShape.circle),
                           child: SvgPicture.network(
                               'https://res.cloudinary.com/dhi3bjn0s/image/upload/v1648739498/test/Flutter_THB1/twitter_duwfvq.svg')),
                     ],
                     mainAxisAlignment: MainAxisAlignment.center,
                   ),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   Row(
                     children: [
-                      Text("Bạn chưa có tài khoản ? ",
+                      const Text("Bạn chưa có tài khoản ? ",
                           style: TextStyle(color: Colors.green)),
                       TextButton(
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: ((context) => RegisterPage())));
+                              builder: ((context) => const RegisterPage())));
                         },
-                        child: Text("Đăng kí "),
+                        child: const Text("Đăng kí "),
                         // style: ButtonStyle(backgroundColor: Colors.black),
                       ),
                     ],

@@ -1,7 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:maclemylinh_18dh110774/routes.dart';
-import 'package:maclemylinh_18dh110774/screens/products.dart';
 
 import 'screens/home.dart';
 
@@ -30,14 +29,14 @@ class MyApp extends StatelessWidget {
           // or simply save your changes to "hot reload" in a Flutter IDE).
           // Notice that the counter didn't reset back to zero; the application
           // is not restarted.
-          primaryColor: Color.fromARGB(255, 29, 86, 110),
+          primaryColor: const Color.fromARGB(255, 29, 86, 110),
           textTheme: const TextTheme(
             headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
             headline2: TextStyle(fontSize: 36.0, fontWeight: FontWeight.bold),
             bodyText1: TextStyle(fontSize: 14.0),
             button: TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold),
           )),
-      home: HomePage(),
+      home: const HomePage(),
       routes: routes,
     );
   }

@@ -7,7 +7,6 @@ import 'package:maclemylinh_18dh110774/firebase/product.dart';
 import 'package:maclemylinh_18dh110774/global.dart';
 import 'package:maclemylinh_18dh110774/model/chi_tiet_gio_hang.dart';
 import 'package:maclemylinh_18dh110774/model/san_pham.dart';
-import 'package:maclemylinh_18dh110774/screens/Home/itemProduct.dart';
 
 class DetailPro extends StatefulWidget {
   SanPham sanPham;
@@ -93,7 +92,7 @@ class _DetailProState extends State<DetailPro> {
                 child: Image.network(imgPro.toString()),
               ),
               Container(
-                padding: EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -104,12 +103,12 @@ class _DetailProState extends State<DetailPro> {
                           width: width / 1.5,
                           child: Text(
                             tenPro,
-                            style: TextStyle(fontSize: 25),
+                            style: const TextStyle(fontSize: 25),
                           ),
                         ),
                         Text(
                           '${NumberFormat('###,###').format(int.parse(giaPro.toString()))} VND',
-                          style: TextStyle(fontSize: 25, color: Colors.red),
+                          style: const TextStyle(fontSize: 25, color: Colors.red),
                         )
                       ],
                     ),
@@ -118,18 +117,18 @@ class _DetailProState extends State<DetailPro> {
                       style: TextStyle(
                           fontSize: 16,
                           color: tinhtrangPro == 1
-                              ? Color.fromARGB(255, 19, 117, 60)
-                              : Color.fromARGB(255, 165, 28, 13)),
+                              ? const Color.fromARGB(255, 19, 117, 60)
+                              : const Color.fromARGB(255, 165, 28, 13)),
                     ),
                   ],
                 ),
               ),
               Container(
-                padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'Mô tả',
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold),
@@ -138,7 +137,7 @@ class _DetailProState extends State<DetailPro> {
                     ]),
               ),
               Container(
-                padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+                padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -150,7 +149,7 @@ class _DetailProState extends State<DetailPro> {
                                 var cartItem = cartCTGioHang.firstWhere((element) => element.idSanPham == widget.sanPham.id, orElse: () => ChiTietGioHang(id: ""));
                                 if(cartItem.id == ""){
                                   cartSanPhamGlb.add(widget.sanPham);
-                                  cartCTGioHang.add(new ChiTietGioHang(idSanPham: id,soLuong: 1,tongTien: giaPro?.toDouble()));
+                                  cartCTGioHang.add(ChiTietGioHang(idSanPham: id,soLuong: 1,tongTien: giaPro?.toDouble()));
                                 }
                                 else{
                                   cartItem.soLuong = cartItem.soLuong! + 1;
@@ -158,25 +157,25 @@ class _DetailProState extends State<DetailPro> {
                                 }
                                 Fluttertoast.showToast(msg: "Thêm vào giỏ hàng thành công");
                               },
-                              child: Text(
+                              child: const Text(
                                 'Thêm vào',
                                 style: TextStyle(fontSize: 15),
                               ),
                               style: ButtonStyle(
                                 backgroundColor:
                                     MaterialStateProperty.all<Color>(
-                                        Color.fromARGB(255, 33, 171, 165)),
+                                        const Color.fromARGB(255, 33, 171, 165)),
                               )),
                           ElevatedButton(
                               onPressed: () {},
-                              child: Text(
+                              child: const Text(
                                 'Đặt hàng',
                                 style: TextStyle(fontSize: 15),
                               ),
                               style: ButtonStyle(
                                 backgroundColor:
                                     MaterialStateProperty.all<Color>(
-                                        Color.fromARGB(255, 33, 171, 165)),
+                                        const Color.fromARGB(255, 33, 171, 165)),
                               )),
                         ],
                       )

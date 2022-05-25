@@ -20,7 +20,7 @@ class ProductsFragment extends StatefulWidget {
 class _ProductFragmentState extends State<ProductsFragment> {
   final keyRefresh = GlobalKey<RefreshIndicatorState>();
   final GlobalKey<RefreshIndicatorState> key =
-      new GlobalKey<RefreshIndicatorState>();
+      GlobalKey<RefreshIndicatorState>();
   List<SanPham> _list = [];
   List<LoaiSP> _listCate = [];
   bool _isSelected = true;
@@ -28,12 +28,12 @@ class _ProductFragmentState extends State<ProductsFragment> {
   List<int> dataload = [];
   Future loadList() async {
     keyRefresh.currentState?.show();
-    await Future.delayed(Duration(microseconds: 4000));
+    await Future.delayed(const Duration(microseconds: 4000));
     final randon = Random();
     final data = List.generate(100, (_) => randon.nextInt(100));
-    if (this.mounted) {
+    if (mounted) {
       setState(() {
-        this.dataload = data;
+        dataload = data;
       });
     }
   }
@@ -92,14 +92,14 @@ class _ProductFragmentState extends State<ProductsFragment> {
                         });
                       },
                       child: Container(
-                        margin: EdgeInsets.only(top: 10, left: 10, right: 10),
-                        padding: EdgeInsets.all(10),
+                        margin: const EdgeInsets.only(top: 10, left: 10, right: 10),
+                        padding: const EdgeInsets.all(10),
                         height: 40,
                         decoration: BoxDecoration(
                             color: _isSelected
                                 ? Colors.teal.shade700
                                 : Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(0))),
+                            borderRadius: const BorderRadius.all(Radius.circular(0))),
                         child: Text(
                           'Tất cả',
                           textAlign: TextAlign.center,
@@ -122,22 +122,20 @@ class _ProductFragmentState extends State<ProductsFragment> {
                               _FilterPro(_listCate[index].idCate);
                             },
                             child: Container(
-                              margin: EdgeInsets.only(top: 10, left: 10),
-                              padding: EdgeInsets.all(10),
+                              margin: const EdgeInsets.only(top: 10, left: 10),
+                              padding: const EdgeInsets.all(10),
                               height: 30,
                               decoration: BoxDecoration(
-                                  color: _selectedIndex != null &&
-                                          _selectedIndex == index
+                                  color: _selectedIndex == index
                                       ? Colors.teal.shade700
                                       : Colors.white,
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(0))),
+                                      const BorderRadius.all(Radius.circular(0))),
                               child: Text(
                                 '${_listCate[index].tenCate}',
                                 style: TextStyle(
                                   fontSize: 15,
-                                  color: _selectedIndex != null &&
-                                          _selectedIndex == index
+                                  color: _selectedIndex == index
                                       ? Colors.white
                                       : Colors.black,
                                 ),
@@ -148,7 +146,7 @@ class _ProductFragmentState extends State<ProductsFragment> {
               ])),
           Expanded(
               child: Container(
-                  margin: EdgeInsets.all(5),
+                  margin: const EdgeInsets.all(5),
                   child: RefreshWidget(
                       onRefresh: loadList,
                       key: key,
@@ -163,7 +161,7 @@ class _ProductFragmentState extends State<ProductsFragment> {
                           sanPham: _foundProduct[index],
                         ),
                         staggeredTileBuilder: (int index) =>
-                            new StaggeredTile.fit(2),
+                            const StaggeredTile.fit(2),
                       ))))
         ],
       ),

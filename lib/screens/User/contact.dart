@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 class ContactPage extends StatefulWidget {
   const ContactPage({Key? key}) : super(key: key);
@@ -47,7 +46,7 @@ class _ContactPageState extends State<ContactPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Liên hệ'),
-        backgroundColor: Color.fromARGB(255, 29, 86, 110),
+        backgroundColor: const Color.fromARGB(255, 29, 86, 110),
       ),
       body: SafeArea(
         child: Padding(
@@ -57,67 +56,67 @@ class _ContactPageState extends State<ContactPage> {
             child: Form(
               child: Column(
                 children: [
-                  Text(
+                  const Text(
                     'Hotline: 0785462513',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(height: 5),
-                  Text(
+                  const SizedBox(height: 5),
+                  const Text(
                     'Email: truli15839@gmail.com',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   TextFormField(
                     controller: nameEditingController,
                     keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: "Tên người gửi",
                         prefixIcon: Icon(Icons.account_box)),
                   ),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   TextFormField(
                     controller: subjectEditingController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: "Chủ đề",
                         prefixIcon: Icon(Icons.subject)),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
                   TextFormField(
                     controller: emailEditingController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: "Email",
                         prefixIcon: Icon(Icons.email)),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
                   TextFormField(
                     controller: contentEditingController,
                     maxLines: 8,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: "Nội dung",
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
                   ElevatedButton(
                       onPressed: () {
                         sendEmail();
                       },
-                      child: Text(
+                      child: const Text(
                         'Gửi mail',
                         style: TextStyle(fontSize: 15),
                       ),
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all<Color>(
-                            Color.fromARGB(255, 33, 171, 165)),
+                            const Color.fromARGB(255, 33, 171, 165)),
                         minimumSize: MaterialStateProperty.all<Size>(
                             Size(MediaQuery.of(context).size.width, 60)),
                       )),
