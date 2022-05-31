@@ -25,5 +25,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
       trangthai : json['trangthai'],
     );
   }
-
+  factory PromotionXD.fromJson1(dynamic json) {
+    return PromotionXD(
+      id: json['id'],
+      tenkhuyenmai: json['tenkhuyenmai'],
+      giamgia:json['giamgia'],
+      ngaybatdau: json['ngaybatdau'],
+      ngayketthuc: json['ngayketthuc'],
+      trangthai : json['trangthai'],
+    );
+  }
 }

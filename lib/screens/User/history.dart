@@ -249,8 +249,7 @@ class _HistoryPageState extends State<HistoryPage> {
 
               return InkWell(
                   onTap: () {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: ((context) => DetailHis())));
+                    Navigator.pushNamed(context, DetailHis.routeName, arguments: listOrder[index].idGioHang.toString());
                   },
                   child: Container(
                     margin: const EdgeInsets.only(left: 15, right: 15, top: 5),

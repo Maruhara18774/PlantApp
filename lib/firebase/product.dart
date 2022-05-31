@@ -64,4 +64,16 @@ class ProductFirebase {
 
     return itemList;
   }
+  Future getProduct(int? id) async {
+    await Firebase.initializeApp();
+    WidgetsFlutterBinding.ensureInitialized();
+    List<SanPham> itemList = [];
+    var result = await products.where('id', isEqualTo:  id).get();
+    for (var i = 0; i < result.docs.length; i++) {
+      itemList.add(SanPham.fromJson(result.docs[i]));
+    }
+    SanPham item = itemList.firstWhere((element) => element.id == id);
+
+    return item;
+  }
 }

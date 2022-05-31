@@ -37,4 +37,15 @@ class GioHang {
       'tong': tong,
     };
   }
+  factory GioHang.fromJson(dynamic json) {
+    return GioHang(
+        idGioHang: json['idGioHang'] as String,
+        idGiaoHang: json['idGiaoHang'] as String,
+        idKhachHang: json['idKhachHang'] as String,
+        ngayDat: json['ngayDat'] as String,
+        tinhTrang: json['tinhTrang'] as String,
+        idKhuyenMai: json['idKhuyenMai'] as String,
+        tong: json['tong'] as double,
+    );
+  }
 }

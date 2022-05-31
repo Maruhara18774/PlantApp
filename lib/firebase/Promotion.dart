@@ -22,8 +22,22 @@ class DataPromotion{
     List<PromotionXD> itemList=[];
     List<PromotionXD> itemList1=[];
     await promotionList.get().then((value) => value.docs.forEach(
-            (element) {itemList.add(PromotionXD.fromJson(element.data()));}));
+            (element) {
+              itemList.add(PromotionXD.fromJson(element.data()));
+            }));
     itemList1=itemList.where((element) => element.id==id).toList();
     return itemList1;
+  }
+  Future getPromotion(String id)async{
+    await Firebase.initializeApp();
+    WidgetsFlutterBinding.ensureInitialized();
+    List<PromotionXD> itemList = [];
+    var result = await promotionList.where('id', isEqualTo: id).get();
+    for (var i = 0; i < result.docs.length; i++) {
+      itemList.add(PromotionXD.fromJson1(result.docs[i]));
+    }
+    PromotionXD item = itemList.firstWhere((element) => element.id == id, orElse: () => PromotionXD(id: "ERROR"));
+
+    return item;
   }
 }

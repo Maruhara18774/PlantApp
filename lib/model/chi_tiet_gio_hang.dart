@@ -25,4 +25,12 @@ class ChiTietGioHang {
       'tongTien': tongTien,
     };
   }
+  factory ChiTietGioHang.fromJson(dynamic json) {
+    return ChiTietGioHang(
+        id: json['id'] as String,
+        idGioHang: json['idGioHang'] as String,
+        idSanPham: json['idSanPham'] as int,
+        soLuong: json['soLuong'] as int,
+        tongTien: json['tongTien'] as double);
+  }
 }

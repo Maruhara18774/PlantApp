@@ -55,4 +55,17 @@ class OrderFirebase {
         .doc(id)
         .update({'tinhTrang': tinhTrang});
   }
+
+  Future getOrder(String? id) async {
+    await Firebase.initializeApp();
+    WidgetsFlutterBinding.ensureInitialized();
+    List<GioHang> itemList = [];
+    var result = await orders.where('idGioHang', isEqualTo: id).get();
+    for (var i = 0; i < result.docs.length; i++) {
+      itemList.add(GioHang.fromJson(result.docs[i]));
+    }
+    GioHang item = itemList.firstWhere((element) => element.idGioHang == id);
+
+    return item;
+  }
 }

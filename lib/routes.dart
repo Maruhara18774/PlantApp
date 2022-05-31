@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:maclemylinh_18dh110774/screens/Address/new-address.dart';
 import 'package:maclemylinh_18dh110774/screens/News/NewsList.dart';
 import 'package:maclemylinh_18dh110774/screens/Address/address.dart';
+import 'package:maclemylinh_18dh110774/screens/User/detailHis.dart';
 import 'package:maclemylinh_18dh110774/screens/cart.dart';
 import 'package:maclemylinh_18dh110774/screens/checkout.dart';
 import 'package:maclemylinh_18dh110774/screens/home.dart';
@@ -16,5 +17,6 @@ final Map<String, WidgetBuilder> routes = {
   CheckoutPage.routeName: (context) => const CheckoutPage(),
   AddressPage.routeName: (context) => const AddressPage(),
   CartPage.routeName: (context) => const CartPage(),
-  NewAddressPage.routeName: (context) => const NewAddressPage()
+  NewAddressPage.routeName: (context) => const NewAddressPage(),
+  DetailHis.routeName: (context) => const DetailHis()
 };
