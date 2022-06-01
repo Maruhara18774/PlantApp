@@ -21,7 +21,7 @@ class FavoriteFirebase {
       'idSanPham': idPro
     });
   }
-  Future<bool> GetStatus(int idPro) async{
+  Future<YeuThich> GetStatus(int idPro) async{
     FirebaseAuth auth = FirebaseAuth.instance;
     String uid = auth.currentUser!.uid.toString();
     await Firebase.initializeApp();
@@ -32,11 +32,23 @@ class FavoriteFirebase {
       itemList.add(YeuThich.fromJson(result.docs[i]));
     }
     YeuThich item = itemList.firstWhere((element) => element.idSanPham == idPro, orElse: () => new YeuThich(id: 'NULL'));
-
-    return item.id == 'NULL';
+    return item;
   }
 
   Future<void> Remove(String id) async{
     FirebaseFirestore.instance.collection('YEU_THICH').doc(id).delete();
+  }
+
+  GetFavorites() async{
+    FirebaseAuth auth = FirebaseAuth.instance;
+    String uid = auth.currentUser!.uid.toString();
+    await Firebase.initializeApp();
+    WidgetsFlutterBinding.ensureInitialized();
+    List<YeuThich> itemList = [];
+    var result = await favorites.where('idKhachHang', isEqualTo: uid).get();
+    for (var i = 0; i < result.docs.length; i++) {
+      itemList.add(YeuThich.fromJson(result.docs[i]));
+    }
+    return itemList;
   }
 }

@@ -3,10 +3,12 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
+import 'package:maclemylinh_18dh110774/firebase/favorite.dart';
 import 'package:maclemylinh_18dh110774/firebase/product.dart';
 import 'package:maclemylinh_18dh110774/global.dart';
 import 'package:maclemylinh_18dh110774/model/chi_tiet_gio_hang.dart';
 import 'package:maclemylinh_18dh110774/model/san_pham.dart';
+import 'package:maclemylinh_18dh110774/model/yeu_thich.dart';
 
 class DetailPro extends StatefulWidget {
   SanPham sanPham;
@@ -18,6 +20,8 @@ class DetailPro extends StatefulWidget {
 
 class _DetailProState extends State<DetailPro> {
   String UID = "";
+  bool isLogin = false;
+  YeuThich? favo = null;
   // List<MDFeedback> mdFeedback = [];
   FetchFeed() async {
     WidgetsFlutterBinding.ensureInitialized();
@@ -62,6 +66,34 @@ class _DetailProState extends State<DetailPro> {
     }
   }
 
+  FetchFavorite() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp();
+    var result = await FavoriteFirebase().GetStatus(widget.sanPham.id!);
+    setState(() {
+      if(result.id != 'NULL'){
+        this.favo = result;
+      }
+      else{
+        this.favo = null;
+      }
+    });
+  }
+
+  favorite() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp();
+    await FavoriteFirebase().Add(widget.sanPham.id!);
+    await FetchFavorite();
+  }
+
+  unFavorite() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp();
+    await FavoriteFirebase().Remove(this.favo!.id!);
+    await FetchFavorite();
+  }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -70,6 +102,10 @@ class _DetailProState extends State<DetailPro> {
     FetchUserInfo();
     FetchDataPro();
     FetchFeed();
+    FetchFavorite();
+    if (currentUserGlb.uid != '') {
+      isLogin = true;
+    }
   }
 
   @override
@@ -147,6 +183,7 @@ class _DetailProState extends State<DetailPro> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
+                          this.isLogin ?
                           ElevatedButton(
                               onPressed: () {
                                 if(tinhtrangPro == 1){
@@ -173,18 +210,36 @@ class _DetailProState extends State<DetailPro> {
                                 backgroundColor:
                                     MaterialStateProperty.all<Color>(
                                         const Color.fromARGB(255, 33, 171, 165)),
-                              )),
-                          ElevatedButton(
-                              onPressed: () {},
-                              child: const Text(
-                                'Yêu thích',
-                                style: TextStyle(fontSize: 15),
-                              ),
-                              style: ButtonStyle(
-                                backgroundColor:
-                                    MaterialStateProperty.all<Color>(
-                                        const Color.fromARGB(255, 33, 171, 165)),
-                              )),
+                              )):SizedBox(),
+                          this.isLogin ? Container(
+                            child: this.favo != null ? ElevatedButton(
+                                onPressed: () {
+                                  unFavorite();
+
+                                },
+                                child: const Text(
+                                  'Hủy yêu thích',
+                                  style: TextStyle(fontSize: 15),
+                                ),
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                  MaterialStateProperty.all<Color>(
+                                      const Color.fromARGB(255, 33, 171, 165)),
+                                )): ElevatedButton(
+                                onPressed: () {
+                                  favorite();
+                                },
+                                child: const Text(
+                                  'Yêu thích',
+                                  style: TextStyle(fontSize: 15),
+                                ),
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                  MaterialStateProperty.all<Color>(
+                                      const Color.fromARGB(255, 33, 171, 165)),
+                                ))
+                          )
+                          :SizedBox(),
                         ],
                       )
                     ]),
