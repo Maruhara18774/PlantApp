@@ -68,4 +68,19 @@ class OrderFirebase {
 
     return item;
   }
+
+  Future cancelOrder(String idOrder) async {
+    String tinhTrang = 'Cancel';
+    final shoppingCartId = FirebaseFirestore.instance
+        .collection('GIO_HANG')
+        .where('idGioHang', isEqualTo: idOrder);
+    await shoppingCartId.get().then((value) => value.docs.forEach((element) {
+      idOrder = element.id;
+    }));
+    // print(shoppingCartId.id);
+    FirebaseFirestore.instance
+        .collection('GIO_HANG')
+        .doc(idOrder)
+        .update({'tinhTrang': tinhTrang});
+  }
 }

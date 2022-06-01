@@ -34,4 +34,14 @@ class KhachHang {
       'avatar': avatar,
     };
   }
+  factory KhachHang.fromJson(dynamic json) {
+    return KhachHang(
+        uid: json['uid'] as String,
+        hoten: json['hoten'] as String,
+        ngaysinh: json['ngaysinh'] as String,
+        email: json['email'] as String,
+        sdt: json['sdt'] as String,
+        avatar: json['avatar'] as String,
+    );
+  }
 }

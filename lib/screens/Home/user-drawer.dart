@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:maclemylinh_18dh110774/firebase/user.dart';
 import 'package:maclemylinh_18dh110774/model/khach_hang.dart';
 import 'package:maclemylinh_18dh110774/screens/User/contact.dart';
 import 'package:maclemylinh_18dh110774/screens/User/history.dart';
@@ -18,25 +20,20 @@ class UserDrawer extends StatefulWidget {
 }
 
 class _UserDrawerState extends State<UserDrawer> {
-  // final String currentUserId = currentUserId?.uid;
-  User? user = FirebaseAuth.instance.currentUser;
-  KhachHang loggedInuser = KhachHang();
+  KhachHang? loggedInuser;
   @override
   void initState() {
     super.initState();
     fetchData();
   }
 
-  Future fetchData() async {
-    await FirebaseFirestore.instance
-        .collection("KHACH_HANG")
-        .doc(user!.uid)
-        .get()
-        .then((value) {
-      loggedInuser = KhachHang.fromMap(value.data());
-      setState(() {});
+  fetchData() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp();
+    var result = await UserFirebase().getUser();
+    setState(() {
+      this.loggedInuser = result;
     });
-    return loggedInuser;
   }
 
   @override
@@ -56,34 +53,21 @@ class _UserDrawerState extends State<UserDrawer> {
                   child: SizedBox(
                       height: 90,
                       width: 90,
-                      // child: CircleAvatar(
-                      //     backgroundImage:
-                      //         NetworkImage('${loggedInuser.avatar}')),
-
-                      child: FutureBuilder(
-                        future: fetchData(),
-                        builder: (context, snapshot) {
-                          return snapshot.hasData
-                              ? CircleAvatar(
-                                  backgroundImage:
-                                      NetworkImage('${loggedInuser.avatar}'))
-                              : Image.asset('assets/anhdaidien.jpg');
-                        },
-                      )),
+                      child: this.loggedInuser != null ? Image.network(this.loggedInuser!.avatar!): SizedBox()),
                 ),
                 Center(
-                  child: Text("${loggedInuser.hoten}",
+                  child: this.loggedInuser != null ? Text("${this.loggedInuser!.hoten}",
                       style: const TextStyle(
                           color: Color.fromARGB(255, 255, 255, 255),
                           fontWeight: FontWeight.w500,
-                          fontSize: 16)),
+                          fontSize: 16)):Text(""),
                 ),
                 Center(
-                  child: Text("${loggedInuser.email}",
+                  child: this.loggedInuser != null ? Text("${this.loggedInuser!.email}",
                       style: const TextStyle(
                           color: Color.fromARGB(255, 255, 255, 255),
                           fontWeight: FontWeight.bold,
-                          fontSize: 12)),
+                          fontSize: 12)):Text(""),
                 ),
               ],
             ),

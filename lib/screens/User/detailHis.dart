@@ -60,6 +60,12 @@ class _DetailHisState extends State<DetailHis> {
       }
     });
   }
+  CancelOrder() async{
+    await Firebase.initializeApp();
+    await OrderFirebase().cancelOrder(orderID);
+    await FetchData(orderID);
+    Fluttertoast.showToast(msg: "Hủy đơn hàng thành công.");
+  }
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -84,11 +90,11 @@ class _DetailHisState extends State<DetailHis> {
                 children: [
                 Text("Thông tin giao hàng",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0)),
                   SizedBox(height: 5),
-                  Text("Tên người nhận:   "+address!.ten!),
+                  this.address != null ? Text("Tên người nhận:   "+address!.ten!) : Text(""),
                   SizedBox(height: 5),
-                  Text("Số điện thoại:   "+address!.sdt!),
+                  this.address != null ? Text("Số điện thoại:   "+address!.sdt!): Text(""),
                   SizedBox(height: 5),
-                  Text("Địa chỉ:   "+address!.diaChi!),
+                  this.address != null ? Text("Địa chỉ:   "+address!.diaChi!): Text(""),
                   SizedBox(height: 5),
                   Text("Chi tiết đơn hàng",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0)),
                   SizedBox(height: 5),
@@ -155,10 +161,21 @@ class _DetailHisState extends State<DetailHis> {
                     width: width - 50,
                     child: Padding(
                       padding: const EdgeInsets.only(right: 20.0),
-                      child: Text("Tổng cộng: " + order!.tong.toString(),textAlign: TextAlign.end,)
+                      child: this.order != null ? Text("Tổng cộng: " + this.order!.tong.toString(),textAlign: TextAlign.end,):
+                          Text("Tổng cộng: 0")
                     ),
-                  )
-
+                  ),
+                  SizedBox(height: 5),
+                  Text("Thông tin đơn hàng",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0)),
+                  SizedBox(height: 5),
+                  this.order != null ? Text("Ngày đặt:   "+this.order!.ngayDat!): Text(""),
+                  SizedBox(height: 5),
+                  this.order != null ? Text("Tình trạng:   "+ getStatus(this.order!.tinhTrang!)): Text(""),
+                  SizedBox(height: 5),
+                  this.order != null && this.order!.tinhTrang == 'New' ?
+                  ElevatedButton(onPressed: (){
+                    this.CancelOrder();
+                  }, child: Text("Hủy đơn hàng")): SizedBox()
               ],
             ),
           ),
@@ -166,4 +183,24 @@ class _DetailHisState extends State<DetailHis> {
       ),
     );
   }
+}
+getStatus(String status){
+  var result = "";
+  switch (status){
+    case 'New': {
+      result = 'Mới';
+    }
+    break;
+
+    case 'Cancel': {
+      result = 'Đã hủy';
+    }
+    break;
+
+    default: {
+      result = 'Không xác định';
+    }
+    break;
+  }
+  return result;
 }

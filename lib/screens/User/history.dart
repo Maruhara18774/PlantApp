@@ -192,7 +192,7 @@ class _HistoryPageState extends State<HistoryPage> {
 
   Widget daHuy() {
     List<GioHang> listOrder1 =
-        listOrder.where((element) => element.tinhTrang == 'Đã hủy').toList();
+        listOrder.where((element) => element.tinhTrang == 'Cancel').toList();
     OrderDetailFirebase().getListDetailOrder();
 
     return Item(listOrder1, listProduct);
@@ -224,7 +224,7 @@ class _HistoryPageState extends State<HistoryPage> {
 
   Widget choXacNhan() {
     List<GioHang> listOrder1 = listOrder
-        .where((element) => element.tinhTrang == 'Chờ xác nhận')
+        .where((element) => element.tinhTrang == 'New')
         .toList();
 
     return Item(listOrder1, listProduct);
@@ -274,7 +274,7 @@ class _HistoryPageState extends State<HistoryPage> {
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
-                            Text('${listOrder[index].tinhTrang}',
+                            Text('${getStatus(listOrder[index].tinhTrang!)}',
                                 style: TextStyle(
                                     fontSize: 16, color: Colors.grey.shade600))
                           ],
@@ -300,4 +300,24 @@ class _HistoryPageState extends State<HistoryPage> {
       ],
     );
   }
+}
+getStatus(String status){
+  var result = "";
+  switch (status){
+    case 'New': {
+      result = 'Mới';
+    }
+    break;
+
+    case 'Cancel': {
+      result = 'Đã hủy';
+    }
+    break;
+
+    default: {
+      result = 'Không xác định';
+    }
+    break;
+  }
+  return result;
 }

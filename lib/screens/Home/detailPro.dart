@@ -84,7 +84,10 @@ class _DetailProState extends State<DetailPro> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          title: Text(tenPro),
+          backgroundColor: const Color.fromARGB(255, 29, 86, 110),
+        ),
         body: Container(
           child: SingleChildScrollView(
             child: Column(children: [
@@ -146,16 +149,21 @@ class _DetailProState extends State<DetailPro> {
                         children: [
                           ElevatedButton(
                               onPressed: () {
-                                var cartItem = cartCTGioHang.firstWhere((element) => element.idSanPham == widget.sanPham.id, orElse: () => ChiTietGioHang(id: ""));
-                                if(cartItem.id == ""){
-                                  cartSanPhamGlb.add(widget.sanPham);
-                                  cartCTGioHang.add(ChiTietGioHang(idSanPham: id,soLuong: 1,tongTien: giaPro?.toDouble()));
+                                if(tinhtrangPro == 1){
+                                  var cartItem = cartCTGioHang.firstWhere((element) => element.idSanPham == widget.sanPham.id, orElse: () => ChiTietGioHang(id: ""));
+                                  if(cartItem.id == ""){
+                                    cartSanPhamGlb.add(widget.sanPham);
+                                    cartCTGioHang.add(ChiTietGioHang(idSanPham: id,soLuong: 1,tongTien: giaPro?.toDouble()));
+                                  }
+                                  else{
+                                    cartItem.soLuong = cartItem.soLuong! + 1;
+                                    cartItem.tongTien = cartItem.tongTien! + giaPro!;
+                                  }
+                                  Fluttertoast.showToast(msg: "Thêm vào giỏ hàng thành công");
                                 }
                                 else{
-                                  cartItem.soLuong = cartItem.soLuong! + 1;
-                                  cartItem.tongTien = cartItem.tongTien! + giaPro!;
+                                  Fluttertoast.showToast(msg: "Sản phẩm đã hết hàng");
                                 }
-                                Fluttertoast.showToast(msg: "Thêm vào giỏ hàng thành công");
                               },
                               child: const Text(
                                 'Thêm vào',
@@ -169,7 +177,7 @@ class _DetailProState extends State<DetailPro> {
                           ElevatedButton(
                               onPressed: () {},
                               child: const Text(
-                                'Đặt hàng',
+                                'Yêu thích',
                                 style: TextStyle(fontSize: 15),
                               ),
                               style: ButtonStyle(
