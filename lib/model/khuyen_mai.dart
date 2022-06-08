@@ -3,35 +3,35 @@ import 'package:cloud_firestore/cloud_firestore.dart';
   class PromotionXD
 {
   String? id;
-  String? tenkhuyenmai;
+  String? ten;
   int? giamgia;
-  Timestamp? ngaybatdau;
-  Timestamp? ngayketthuc;
-  String? trangthai;
+  String? ngaybd;
+  String? ngaykt;
+  int? trangthai;
   PromotionXD(
       {this.id,
-        this.tenkhuyenmai,
+        this.ten,
         this.giamgia,
-        this.ngaybatdau,
-        this.ngayketthuc,
+        this.ngaybd,
+        this.ngaykt,
         this.trangthai});
   factory PromotionXD.fromJson(Map<String,dynamic>json){
     return PromotionXD(
       id: json['id'],
-      tenkhuyenmai: json['tenkhuyenmai'],
+      ten: json['ten'],
       giamgia:json['giamgia'],
-      ngaybatdau: json['ngaybatdau'],
-      ngayketthuc: json['ngayketthuc'],
+      ngaybd: json['ngaybd'],
+      ngaykt: json['ngaykt'],
       trangthai : json['trangthai'],
     );
   }
   factory PromotionXD.fromJson1(dynamic json) {
     return PromotionXD(
       id: json['id'],
-      tenkhuyenmai: json['tenkhuyenmai'],
+      ten: json['ten'],
       giamgia:json['giamgia'],
-      ngaybatdau: json['ngaybatdau'],
-      ngayketthuc: json['ngayketthuc'],
+      ngaybd: json['ngaybd'],
+      ngaykt: json['ngaykt'],
       trangthai : json['trangthai'],
     );
   }

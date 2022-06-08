@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:maclemylinh_18dh110774/firebase/Promotion.dart';
 import 'package:maclemylinh_18dh110774/firebase/address.dart';
+import 'package:maclemylinh_18dh110774/firebase/notification.dart';
 import 'package:maclemylinh_18dh110774/firebase/order.dart';
 import 'package:maclemylinh_18dh110774/firebase/orderDetail.dart';
 import 'package:maclemylinh_18dh110774/model/chi_tiet_gio_hang.dart';
@@ -92,6 +93,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
     var result = await OrderFirebase().AddOrder(
         _diaChi!.id!, finalSum, promotion == null ? "" : promotion!.id!);
     await AddOrderDetails(result);
+    await AddNotification(result);
     cartCTGioHang = List<ChiTietGioHang>.empty(growable: true);
     cartSanPhamGlb = List<SanPham>.empty(growable: true);
     Fluttertoast.showToast(msg: 'Đặt hàng thành công');
@@ -106,6 +108,14 @@ class _CheckoutPageState extends State<CheckoutPage> {
       await OrderDetailFirebase().AddOrderDetail(
           idOrder, element.idSanPham!, element.soLuong!, element.tongTien!);
     }
+  }
+
+  AddNotification(String idOrder) async {
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp();
+    await NotificationFirebase().Add(
+        idOrder,
+        "Đơn hàng "+idOrder+" đã được đặt thành công. Cửa hàng sẽ sớm xác nhận đơn hàng của bạn");
   }
 
   @override

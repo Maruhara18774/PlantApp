@@ -152,35 +152,30 @@ class _HistoryPageState extends State<HistoryPage> {
                 isScrollable: true,
               ),
               Expanded(
-                  child: FutureBuilder(
-                future: fetchDataPro(),
-                builder: (context, snapshot) {
-                  return snapshot.hasData || listOrder.isNotEmpty
-                      ? TabBarView(
-                          children: <Widget>[
-                            Container(
-                              child: all(),
-                            ),
-                            Container(
-                              child: choXacNhan(),
-                            ),
-                            Container(
-                              child: daXacNhan(),
-                            ),
-                            Container(
-                              child: dangGiaoHang(),
-                            ),
-                            Container(
-                              child: giaoThanhCong(),
-                            ),
-                            Container(
-                              child: daHuy(),
-                            ),
-                          ],
-                        )
-                      : const Text('load');
-                },
-              )),
+                  child: listOrder.length != 0 ?
+                  TabBarView(
+                    children: <Widget>[
+                      Container(
+                        child: all(),
+                      ),
+                      Container(
+                        child: choXacNhan(),
+                      ),
+                      Container(
+                        child: daXacNhan(),
+                      ),
+                      Container(
+                        child: dangGiaoHang(),
+                      ),
+                      Container(
+                        child: giaoThanhCong(),
+                      ),
+                      Container(
+                        child: daHuy(),
+                      ),
+                    ],
+                  ): Text("Loading ...")
+              ),
             ],
           ),
         ));

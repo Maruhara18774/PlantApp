@@ -58,7 +58,7 @@ class _PromotionState extends State<Promotion> {
           // padding: EdgeInsets.all(15),
             margin: const EdgeInsets.only(top: 10, left: 16, right: 16),
             decoration: BoxDecoration(
-                color: Colors.green.shade200,
+                color: Colors.black12.withOpacity(0.05),
                 borderRadius: const BorderRadius.all(Radius.circular(10))),
             child: ListTile ( //ListTile
               minLeadingWidth: 5,
@@ -66,26 +66,18 @@ class _PromotionState extends State<Promotion> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    'Ngày bắt đầu khuyến mãi : ${lsPromo[index].ngaybatdau!.toDate().toString()}',
+                    'Ngày bắt đầu khuyến mãi : ${lsPromo[index].ngaybd!.substring(0,10)}',
 
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(color: Colors.grey.shade600),
                   ),
-                  /*Text(
-                    '${lsPromo[index].ngayketthuc!.toDate().toString()}',
-
-                    //'${DateFormat('dd/MM/yyyy').format( lsPromo[index].ngayketthuc!.toDate())}',
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(color: Colors.grey.shade600),
-                  ),*/
                 ],
               ),
               leading: Icon(Icons.card_giftcard_outlined,
                   color: Colors.red.shade800),
               title: Text(
-                '${lsPromo[index].tenkhuyenmai} ',
+                '${lsPromo[index].ten} ',
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
@@ -96,11 +88,5 @@ class _PromotionState extends State<Promotion> {
               ),
             ))
     );  }
-
-  DateFormat(String s) {
-
-  }
-
-  NumberFormat(String s) {}
 }
 

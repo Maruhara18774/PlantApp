@@ -4,11 +4,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:maclemylinh_18dh110774/firebase/user.dart';
+import 'package:maclemylinh_18dh110774/global.dart';
+import 'package:maclemylinh_18dh110774/model/chi_tiet_gio_hang.dart';
 import 'package:maclemylinh_18dh110774/model/khach_hang.dart';
+import 'package:maclemylinh_18dh110774/model/san_pham.dart';
 import 'package:maclemylinh_18dh110774/screens/User/contact.dart';
 import 'package:maclemylinh_18dh110774/screens/User/history.dart';
 import 'package:maclemylinh_18dh110774/screens/User/love.dart';
 import 'package:maclemylinh_18dh110774/screens/User/profile.dart';
+import 'package:maclemylinh_18dh110774/screens/home.dart';
 import 'package:maclemylinh_18dh110774/screens/login.dart';
 
 import '../News/NewsList.dart';
@@ -158,7 +162,9 @@ class _UserDrawerState extends State<UserDrawer> {
   // the logout function
   Future<void> logout(BuildContext context) async {
     await FirebaseAuth.instance.signOut();
-    Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (context) => const LoginPage()));
+    currentUserGlb.uid = '';
+    cartSanPhamGlb = List<SanPham>.empty(growable: true);
+    cartCTGioHang = List<ChiTietGioHang>.empty(growable: true);
+    Navigator.pushNamed(context, HomePage.routeName);
   }
 }

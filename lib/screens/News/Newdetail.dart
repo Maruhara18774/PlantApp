@@ -32,7 +32,7 @@ class _DetailNewsState extends State<DetailNews> {
                             borderRadius: BorderRadius.all(Radius.circular(15)))),
                     child: FadeInImage(
                       placeholder: const AssetImage('./assets/images/load.gif'),
-                      image: NetworkImage('${widget.news!.imageNews}'),
+                      image: NetworkImage('${widget.news!.hinhAnh}'),
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -51,7 +51,7 @@ class _DetailNewsState extends State<DetailNews> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          '${widget.news!.nameNews}',
+                          '${widget.news!.ten}',
                           maxLines: 3,
                           style: TextStyle(
                               fontSize: 20,
@@ -63,7 +63,7 @@ class _DetailNewsState extends State<DetailNews> {
                           height: 20,
                         ),
                         Text(
-                          '${widget.news!.detailNews}',
+                          '${widget.news!.noidung}',
 
                           style: TextStyle(
                               fontSize: 17,

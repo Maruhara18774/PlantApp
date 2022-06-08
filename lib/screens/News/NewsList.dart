@@ -48,18 +48,14 @@ class _NewsState extends State<NewsState> {
           },
           child: const Icon(Icons.arrow_back_ios),
         ),
-        title: const Text("Giỏ hàng"),
+        title: const Text("Tin tức"),
       ),
       body: Material(
         child:  Container(
-          // padding: EdgeInsets.only(left: 15, right: 15),
           color: Colors.grey.shade200,
           child: ListView.builder(
-            // key: _myListKey,
-            // initialItemCount: lsNews.length,
               itemCount: lsNews.length,
               itemBuilder: (context, index) {
-                print(lsNews[index].nameNews);
                 return InkWell(
                     onTap: () {
                       Navigator.push(
@@ -77,17 +73,6 @@ class _NewsState extends State<NewsState> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
-                            height: 80,
-                            width: 80,
-                            decoration: ShapeDecoration(
-                                color: Colors.grey.shade100,
-                                shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.all(Radius.circular(7))),
-                                image: DecorationImage(
-                                    image: NetworkImage('${lsNews[index].imageNews}'),
-                                    fit: BoxFit.cover)),
-                          ),
                           Expanded(
                               child: Container(
                                   padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
@@ -96,7 +81,7 @@ class _NewsState extends State<NewsState> {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        '${lsNews[index].nameNews}',
+                                        '${lsNews[index].ten}',
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
                                         style: const TextStyle(
@@ -106,7 +91,7 @@ class _NewsState extends State<NewsState> {
                                         height: 3,
                                       ),
                                       Text(
-                                        '${lsNews[index].detailNews}',
+                                        '${lsNews[index].noidung}',
                                         maxLines: 2,
                                         overflow: TextOverflow.ellipsis,
                                         style: TextStyle(color: Colors.grey.shade600),
@@ -118,8 +103,7 @@ class _NewsState extends State<NewsState> {
                     ));
               }),
 
-        )
-        ,
+        ),
       ),
     );
   }

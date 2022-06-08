@@ -184,9 +184,10 @@ class _ProfilePageState extends State<ProfilePage> {
                               ),
                               const SizedBox(height: 5),
                               DateTimePicker(
-                                  decoration: InputDecoration(
-                                      contentPadding: EdgeInsets.zero,
-                                      hintText: '${infoUser.ngaysinh}'),
+                                  decoration: const InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    hintText: "Ngày sinh",
+                                    prefixIcon: Icon(Icons.cake_outlined)),
                                   type: DateTimePickerType.date,
                                   initialValue: infoUser.ngaysinh,
                                   // controller: birthEditingController,
@@ -264,7 +265,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   style: ButtonStyle(
                                     backgroundColor:
                                         MaterialStateProperty.all<Color>(
-                                            const Color.fromARGB(255, 4, 20, 250)),
+                                            const Color.fromARGB(255, 29, 86, 110)),
                                     minimumSize:
                                         MaterialStateProperty.all<Size>(Size(
                                             MediaQuery.of(context).size.width,

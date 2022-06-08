@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:maclemylinh_18dh110774/firebase/Promotion.dart';
 import 'package:maclemylinh_18dh110774/firebase/address.dart';
+import 'package:maclemylinh_18dh110774/firebase/notification.dart';
 import 'package:maclemylinh_18dh110774/firebase/order.dart';
 import 'package:maclemylinh_18dh110774/firebase/orderDetail.dart';
 import 'package:maclemylinh_18dh110774/firebase/product.dart';
@@ -64,7 +65,16 @@ class _DetailHisState extends State<DetailHis> {
     await Firebase.initializeApp();
     await OrderFirebase().cancelOrder(orderID);
     await FetchData(orderID);
+    await AddNotification(orderID);
     Fluttertoast.showToast(msg: "Hủy đơn hàng thành công.");
+  }
+
+  AddNotification(String idOrder) async {
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp();
+    await NotificationFirebase().Add(
+        idOrder,
+        "Đơn hàng "+idOrder+" đã được hủy thành công.");
   }
   @override
   Widget build(BuildContext context) {

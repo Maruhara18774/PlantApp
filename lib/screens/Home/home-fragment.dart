@@ -151,18 +151,6 @@ class _HomeFragmentState extends State<HomeFragment> {
                       fontWeight: FontWeight.bold,
                       color: Color.fromARGB(255, 22, 58, 95))),
             ),
-            TextButton(
-              onPressed: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Promotion()));
-              },
-              child: Text('Xem tất cả',
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Dosis',
-                      color: Colors.grey.shade600)),
-            )
           ],
         ),
       ),
@@ -301,23 +289,13 @@ class _HomeFragmentState extends State<HomeFragment> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    '${listDis[index].tenkhuyenmai}',
+                                    '${listDis[index].ten}',
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 16),
                                   ),
-                                  SizedBox(
-                                    height: 3,
-                                  ),
-                                  Text(
-                                    '${listDis[index].trangthai}',
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                    style:
-                                        TextStyle(color: Colors.grey.shade600),
-                                  )
                                 ],
                               )))
                     ],
