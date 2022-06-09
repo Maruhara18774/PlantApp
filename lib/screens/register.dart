@@ -100,19 +100,16 @@ class _RegisterPageState extends State<RegisterPage> {
                 DateTimePicker(
                   type: DateTimePickerType.date,
                   // controller: birthEditingController,
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: "Ngày sinh",
+                      prefixIcon: Icon(Icons.cake_outlined)),
                   dateMask: 'dd/MM/yyyy',
                   firstDate: DateTime(2000),
                   lastDate: DateTime(2100),
                   dateLabelText: 'Ngày sinh',
                   onChanged: (value) =>
                       setState(() => birthEditingController.text = value),
-                  // validator: (value) {
-                  //   setState(() => _birth = value ?? '');
-                  //   return null;
-                  // },
-                  // onSaved: (value) {
-                  //   birthEditingController.text = value!;
-                  // },
                 ),
                 const SizedBox(
                   height: 10,
@@ -227,38 +224,6 @@ class _RegisterPageState extends State<RegisterPage> {
                     )),
                 const SizedBox(
                   height: 10,
-                ),
-                Row(
-                  children: [
-                    Container(
-                        height: 40,
-                        width: 40,
-                        margin: const EdgeInsets.only(left: 5, right: 5),
-                        padding: const EdgeInsets.all(10),
-                        decoration: const BoxDecoration(
-                            color: Color(0xFFF5F6F9), shape: BoxShape.circle),
-                        child: SvgPicture.network(
-                            'https://res.cloudinary.com/dhi3bjn0s/image/upload/v1648739498/test/Flutter_THB1/facebook-2_jifbrg.svg')),
-                    Container(
-                        height: 40,
-                        width: 40,
-                        margin: const EdgeInsets.only(left: 5, right: 5),
-                        padding: const EdgeInsets.all(10),
-                        decoration: const BoxDecoration(
-                            color: Color(0xFFF5F6F9), shape: BoxShape.circle),
-                        child: SvgPicture.network(
-                            'https://res.cloudinary.com/dhi3bjn0s/image/upload/v1648739498/test/Flutter_THB1/google-icon_vezhnw.svg')),
-                    Container(
-                        height: 40,
-                        width: 40,
-                        margin: const EdgeInsets.only(left: 5, right: 5),
-                        padding: const EdgeInsets.all(10),
-                        decoration: const BoxDecoration(
-                            color: Color(0xFFF5F6F9), shape: BoxShape.circle),
-                        child: SvgPicture.network(
-                            'https://res.cloudinary.com/dhi3bjn0s/image/upload/v1648739498/test/Flutter_THB1/twitter_duwfvq.svg')),
-                  ],
-                  mainAxisAlignment: MainAxisAlignment.center,
                 ),
                 const SizedBox(height: 5),
               ],

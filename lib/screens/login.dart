@@ -127,38 +127,6 @@ class _LoginPageState extends State<LoginPage> {
                       style: TextStyle(fontSize: 14),
                     ),
                   ),
-                  Row(
-                    children: [
-                      Container(
-                          height: 40,
-                          width: 40,
-                          margin: const EdgeInsets.only(left: 5, right: 5),
-                          padding: const EdgeInsets.all(10),
-                          decoration: const BoxDecoration(
-                              color: Color(0xFFF5F6F9), shape: BoxShape.circle),
-                          child: SvgPicture.network(
-                              'https://res.cloudinary.com/dhi3bjn0s/image/upload/v1648739498/test/Flutter_THB1/facebook-2_jifbrg.svg')),
-                      Container(
-                          height: 40,
-                          width: 40,
-                          margin: const EdgeInsets.only(left: 5, right: 5),
-                          padding: const EdgeInsets.all(10),
-                          decoration: const BoxDecoration(
-                              color: Color(0xFFF5F6F9), shape: BoxShape.circle),
-                          child: SvgPicture.network(
-                              'https://res.cloudinary.com/dhi3bjn0s/image/upload/v1648739498/test/Flutter_THB1/google-icon_vezhnw.svg')),
-                      Container(
-                          height: 40,
-                          width: 40,
-                          margin: const EdgeInsets.only(left: 5, right: 5),
-                          padding: const EdgeInsets.all(10),
-                          decoration: const BoxDecoration(
-                              color: Color(0xFFF5F6F9), shape: BoxShape.circle),
-                          child: SvgPicture.network(
-                              'https://res.cloudinary.com/dhi3bjn0s/image/upload/v1648739498/test/Flutter_THB1/twitter_duwfvq.svg')),
-                    ],
-                    mainAxisAlignment: MainAxisAlignment.center,
-                  ),
                   const SizedBox(height: 5),
                   Row(
                     children: [

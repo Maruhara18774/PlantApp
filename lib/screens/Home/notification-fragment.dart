@@ -53,7 +53,14 @@ class _NotificationFragmentState extends State<NotificationFragment> {
                 ),
                 child: Padding(
                   padding: const EdgeInsets.only(top: 15.0, bottom: 15.0,left: 5.0, right: 5.0),
-                  child: Text(_list[index].noidung!, style: TextStyle(color: Colors.black54)),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(_list[index].ngay!),
+                      SizedBox(height: 5),
+                      Text(_list[index].noidung!, style: TextStyle(color: Colors.black54)),
+                    ],
+                  ),
                 )
             );
           }),
