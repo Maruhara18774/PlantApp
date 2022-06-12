@@ -4,11 +4,9 @@ import 'package:maclemylinh_18dh110774/model/News.dart';
 import 'package:maclemylinh_18dh110774/firebase/News.dart';
 import 'package:maclemylinh_18dh110774/screens/News/Newdetail.dart';
 
-
-
 class NewsState extends StatefulWidget {
   static String routeName = "/NewsList";
-  const NewsState ({Key? key}) : super(key: key);
+  const NewsState({Key? key}) : super(key: key);
 
   @override
   _NewsState createState() => _NewsState();
@@ -18,40 +16,34 @@ class _NewsState extends State<NewsState> {
   final _myListKey = GlobalKey<AnimatedListState>();
   List<NewsXD> lsNews = [];
 
-
-  FetchData()async{
+  FetchData() async {
     WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp();
-    dynamic result= await FirNews().getListNews();
-    if(result==null){
+    dynamic result = await FirNews().getListNews();
+    if (result == null) {
       print('unable');
-    }else{
+    } else {
       setState(() {
-        lsNews=result;
+        lsNews = result;
       });
     }
   }
+
   @override
-  void initState(){
+  void initState() {
     super.initState();
     FetchData();
-
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 29, 86, 110),
-        leading: GestureDetector(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          child: const Icon(Icons.arrow_back_ios),
-        ),
         title: const Text("Tin tức"),
       ),
       body: Material(
-        child:  Container(
+        child: Container(
           color: Colors.grey.shade200,
           child: ListView.builder(
               itemCount: lsNews.length,
@@ -61,31 +53,37 @@ class _NewsState extends State<NewsState> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => DetailNews(news: lsNews[index])));
+                              builder: (context) =>
+                                  DetailNews(news: lsNews[index])));
                     },
                     child: Container(
                       padding: const EdgeInsets.all(7),
-                      margin: const EdgeInsets.only(top: 10, left: 16, right: 16),
+                      margin:
+                          const EdgeInsets.only(top: 10, left: 16, right: 16),
                       decoration: BoxDecoration(
-                          color: Colors.lightGreen.shade100,
-                          borderRadius: const BorderRadius.all(Radius.circular(15))),
+                          color: Color.fromARGB(255, 225, 225, 225),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(0))),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Expanded(
                               child: Container(
-                                  padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+                                  padding: const EdgeInsets.only(
+                                      top: 10, left: 10, right: 10),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         '${lsNews[index].ten}',
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
                                         style: const TextStyle(
-                                            fontWeight: FontWeight.bold, fontSize: 16),
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16),
                                       ),
                                       const SizedBox(
                                         height: 3,
@@ -94,7 +92,8 @@ class _NewsState extends State<NewsState> {
                                         '${lsNews[index].noidung}',
                                         maxLines: 2,
                                         overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(color: Colors.grey.shade600),
+                                        style: TextStyle(
+                                            color: Colors.grey.shade600),
                                       )
                                     ],
                                   )))
@@ -102,7 +101,6 @@ class _NewsState extends State<NewsState> {
                       ),
                     ));
               }),
-
         ),
       ),
     );

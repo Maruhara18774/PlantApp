@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:maclemylinh_18dh110774/model/khuyen_mai.dart';
 import 'package:maclemylinh_18dh110774/firebase/Promotion.dart';
 import 'package:maclemylinh_18dh110774/screens/Promotion/Promotiondetail.dart';
+
 class Promotion extends StatefulWidget {
   const Promotion({Key? key}) : super(key: key);
 
@@ -34,7 +35,9 @@ class _PromotionState extends State<Promotion> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child:Scaffold(body: Container(
+    return SafeArea(
+        child: Scaffold(
+            body: Container(
       //color: Colors.green.shade400,
       child: ListView.builder(
           itemCount: lsPromo.length,
@@ -45,7 +48,6 @@ class _PromotionState extends State<Promotion> {
   }
 
   Widget _itemPromo(int index) {
-
     return InkWell(
         onTap: () {
           Navigator.push(
@@ -55,19 +57,19 @@ class _PromotionState extends State<Promotion> {
                       ItemPromotion(promotion: lsPromo[index])));
         },
         child: Container(
-          // padding: EdgeInsets.all(15),
+            // padding: EdgeInsets.all(15),
             margin: const EdgeInsets.only(top: 10, left: 16, right: 16),
             decoration: BoxDecoration(
                 color: Colors.black12.withOpacity(0.05),
-                borderRadius: const BorderRadius.all(Radius.circular(10))),
-            child: ListTile ( //ListTile
+                borderRadius: const BorderRadius.all(Radius.circular(0))),
+            child: ListTile(
+              //ListTile
               minLeadingWidth: 5,
               subtitle: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    'Ngày bắt đầu khuyến mãi : ${lsPromo[index].ngaybd!.substring(0,10)}',
-
+                    'Ngày bắt đầu khuyến mãi : ${lsPromo[index].ngaybd!.substring(0, 10)}',
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(color: Colors.grey.shade600),
@@ -81,12 +83,11 @@ class _PromotionState extends State<Promotion> {
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  color : Colors.red.shade700,
+                  color: Colors.red.shade700,
                   fontWeight: FontWeight.bold,
                   fontSize: 17,
                 ),
               ),
-            ))
-    );  }
+            )));
+  }
 }
-

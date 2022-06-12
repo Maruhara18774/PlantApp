@@ -10,6 +10,7 @@ class ItemPromotion extends StatefulWidget {
   @override
   _ItemPromotionState createState() => _ItemPromotionState();
 }
+
 class _ItemPromotionState extends State<ItemPromotion> {
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class _ItemPromotionState extends State<ItemPromotion> {
           ),
           flexibleSpace: Container(
             decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 29, 86, 110),
+              color: Color.fromARGB(255, 29, 86, 110),
             ),
           ),
         ),
@@ -44,18 +45,18 @@ class _ItemPromotionState extends State<ItemPromotion> {
                       width: size.width,
                       decoration: const BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(15))),
+                          borderRadius: BorderRadius.all(Radius.circular(0))),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-
                           Text(
                             '''GIẢM ${widget.promotion!.giamgia}% CHO TẤT CẢ ĐƠN HÀNG BẤT KỲ''',
                             maxLines: 1,
                             style: TextStyle(
-                                color : Colors.red.shade600,
-                                fontWeight: FontWeight.bold, fontSize: 21),
+                                color: Colors.red.shade600,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 21),
                           ),
                           Text(
                             'Hạn sử dụng: ${widget.promotion!.ngaykt!}',
@@ -65,34 +66,31 @@ class _ItemPromotionState extends State<ItemPromotion> {
                                 fontSize: 15,
                                 color: Colors.grey.shade500),
                           ),
-
                           ListTile(
-                            title: Text (
+                            title: Text(
                               'MÃ KHUYẾN MÃI : ${widget.promotion!.id}',
                               maxLines: 1,
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20,
                                   color: Colors.red.shade500),
-
                             ),
-                            leading: Icon(Icons.copy_sharp,
-                              size: 20 ,
+                            leading: Icon(
+                              Icons.copy_sharp,
+                              size: 20,
                               color: Colors.teal.shade900,
                             ),
-                            onTap : () {
-                              Clipboard.setData(
-                                  ClipboardData(text: '${widget.promotion!.id}'));
-                              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                            onTap: () {
+                              Clipboard.setData(ClipboardData(
+                                  text: '${widget.promotion!.id}'));
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(const SnackBar(
                                 content: Text('Sao chép thành công !'),
                               ));
                             },
-
                           ),
                         ],
-
                       )),
-
                   const SizedBox(
                     height: 7,
                   ),
@@ -101,7 +99,7 @@ class _ItemPromotionState extends State<ItemPromotion> {
                       width: size.width,
                       decoration: const BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(15))),
+                          borderRadius: BorderRadius.all(Radius.circular(0))),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -165,19 +163,14 @@ class _ItemPromotionState extends State<ItemPromotion> {
                                     ),
                                     title: const Text(
                                         'Voucher không được hoàn lại và không có giá trị quy đổi thành tiền mặt.')),
-
                               ],
                             ),
-
                           )
-
                         ],
-
                       )),
                   const SizedBox(
                     height: 50,
                   ),
-
                 ],
               ),
             )));

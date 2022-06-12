@@ -115,7 +115,9 @@ class _CheckoutPageState extends State<CheckoutPage> {
     await Firebase.initializeApp();
     await NotificationFirebase().Add(
         idOrder,
-        "Đơn hàng "+idOrder+" đã được đặt thành công. Cửa hàng sẽ sớm xác nhận đơn hàng của bạn");
+        "Đơn hàng " +
+            idOrder +
+            " đã được đặt thành công. Cửa hàng sẽ sớm xác nhận đơn hàng của bạn");
   }
 
   @override
@@ -127,12 +129,6 @@ class _CheckoutPageState extends State<CheckoutPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 29, 86, 110),
-        leading: GestureDetector(
-          onTap: () {
-            Navigator.pushNamed(context, CartPage.routeName);
-          },
-          child: const Icon(Icons.arrow_back_ios),
-        ),
         title: const Text("Thanh toán"),
       ),
       bottomNavigationBar: Row(
@@ -189,7 +185,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   child: _diaChi == null
                       ? Row(
                           children: const [
-                            Text('Vui lòng chọn địa chỉ'),
+                            Text(
+                              'Vui lòng chọn địa chỉ',
+                              style: TextStyle(fontSize: 15.0),
+                              textAlign: TextAlign.center,
+                            ),
                           ],
                         )
                       : Row(
@@ -268,7 +268,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                 ),
                                 Text(
                                   _listSP[index].ten!,
-                                  style: const TextStyle(color: Colors.black),
+                                  style: const TextStyle(
+                                      fontSize: 14.0,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 const SizedBox(height: 5),
                                 Text(
@@ -281,7 +284,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                         fontWeight: FontWeight.normal)),
                                 const SizedBox(height: 5),
                                 Text('Tổng: ' +
-                                    _listCTGH[index].tongTien.toString())
+                                    _listCTGH[index].tongTien.toString()),
                               ],
                             ),
                           ),
@@ -289,6 +292,13 @@ class _CheckoutPageState extends State<CheckoutPage> {
                       ],
                     );
                   }),
+              const Divider(
+                height: 20,
+                thickness: 0,
+                indent: 20,
+                endIndent: 20,
+                color: Colors.black,
+              ),
               Padding(
                 padding: const EdgeInsets.only(right: 20.0),
                 child: Column(
@@ -319,12 +329,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     ),
                     SizedBox(
                       width: width - 200,
-                      height: 60,
+                      height: 50,
                       child: TextFormField(
                         keyboardType: TextInputType.text,
                         decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            hintText: "Mã giảm giá"),
+                            border: OutlineInputBorder(), hintText: "nhập mã"),
                         onChanged: (value) {
                           _voucher = value;
                         },
