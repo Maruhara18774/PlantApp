@@ -55,6 +55,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                   ),
                   ElevatedButton(
                       onPressed: () {
+                        print(emailController.text);
                         FirebaseAuth.instance
                             .sendPasswordResetEmail(email: emailController.text)
                             .then((value) => Navigator.of(context).pop());

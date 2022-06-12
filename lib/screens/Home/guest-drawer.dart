@@ -56,7 +56,7 @@ class GuestDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.contact_mail),
+            leading: const Icon(Icons.newspaper),
             title: const Text(
               'Tin tức',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),

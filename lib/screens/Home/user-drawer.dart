@@ -57,21 +57,27 @@ class _UserDrawerState extends State<UserDrawer> {
                   child: SizedBox(
                       height: 90,
                       width: 90,
-                      child: this.loggedInuser != null ? Image.network(this.loggedInuser!.avatar!): SizedBox()),
+                      child: this.loggedInuser != null
+                          ? Image.network(this.loggedInuser!.avatar!)
+                          : SizedBox()),
                 ),
                 Center(
-                  child: this.loggedInuser != null ? Text("${this.loggedInuser!.hoten}",
-                      style: const TextStyle(
-                          color: Color.fromARGB(255, 255, 255, 255),
-                          fontWeight: FontWeight.w500,
-                          fontSize: 16)):Text(""),
+                  child: this.loggedInuser != null
+                      ? Text("${this.loggedInuser!.hoten}",
+                          style: const TextStyle(
+                              color: Color.fromARGB(255, 255, 255, 255),
+                              fontWeight: FontWeight.w500,
+                              fontSize: 16))
+                      : Text(""),
                 ),
                 Center(
-                  child: this.loggedInuser != null ? Text("${this.loggedInuser!.email}",
-                      style: const TextStyle(
-                          color: Color.fromARGB(255, 255, 255, 255),
-                          fontWeight: FontWeight.bold,
-                          fontSize: 12)):Text(""),
+                  child: this.loggedInuser != null
+                      ? Text("${this.loggedInuser!.email}",
+                          style: const TextStyle(
+                              color: Color.fromARGB(255, 255, 255, 255),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12))
+                      : Text(""),
                 ),
               ],
             ),
@@ -116,7 +122,7 @@ class _UserDrawerState extends State<UserDrawer> {
             },
           ),
           ListTile(
-              leading: const Icon(Icons.contact_mail),
+              leading: const Icon(Icons.newspaper),
               title: const Text(
                 'Tin tức',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
